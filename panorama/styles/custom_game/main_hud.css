@@ -1,0 +1,196 @@
+
+
+
+Label{
+	font-size:20px;
+	color:white;
+	/* font-family:Radiance,FZLanTingHei-R-GBK,TH Sarabun New,YDYGO 540,Gulim,MingLiU; */
+	text-shadow: 1px 1px 1px 1.0 #000000ff;
+	overflow:clip;
+}
+.store_title{
+	/* background-image: url("file://{images}/dota_plus/plus_wall_header_png.vtex"); */
+	background-size: 100% 200%;
+	height:100px;
+	width:100%;
+	box-shadow: fill #00000066 -4px -4px 8px 8px;
+}
+.text_panel_title{
+	font-size:40px;
+	color:#fff;
+	margin-left:50px;
+	vertical-align: center;
+	horizontal-align:left;
+}
+.board_line_content{
+	width:200px;
+	height:40px;
+	/*background-color: rgba(0,0,0,0.8);*/
+	/*background-image: url("s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex");*/
+    /*background-size:100% 100%;*/
+	/*border-radius: 5px;*/
+}
+.board_line_plus{
+	width:200px;
+	height:60px;
+	horizontal-align:center;
+	vertical-align:center;
+}
+.board_line_plus Label{
+	margin-top:-5px;
+	font-size:50px;
+	horizontal-align:center;
+	vertical-align:center;
+	font-weight:bold;
+}
+#board_round{
+	width:180px;
+	height:150px;
+	flow-children:down;
+	horizontal-align:center;
+}
+#board_top{
+	width:900px;
+	height:120px;
+	horizontal-align:center;
+	vertical-align:top;
+	flow-children:right;
+	z-index:1000;
+}
+
+#board_right_top{
+	width:500px;
+	height:400px;
+	horizontal-align:right;
+	flow-children:down;
+	vertical-align:top;
+	margin-right:200px;
+	margin-top:12px;
+	z-index:1000;
+}
+
+#board_left{
+    height:800px;
+    width:500px;
+    
+    horizontal-align:left;
+    vertical-align: bottom;
+    margin-left:10px;
+    margin-top:660px;
+    
+    z-index:400;
+}
+
+.tips{
+	flow-children:down;
+}
+
+.tip_hidden{
+	visibility:collapse;
+}
+
+.tip_label{
+	color:white;
+	font-size:20px;
+}
+.board_line_title{
+	margin-top:10px;
+	width:200px;
+	height:20px;
+	/*background-color: rgba(0,0,0,0.5);*/
+}
+.board_line_title Label{
+	color:#bbbbbb;
+	font-size:18px;
+	horizontal-align:center;
+	vertical-align:center;
+}
+
+
+.board_line_content Label.text_xl{
+	font-size:28px;
+}
+
+.board_line_content .align-container{
+	height:40px;
+	flow-children:right;
+	horizontal-align:center;
+	overflow: clip clip;
+}
+.board_line_content .align-container Label{
+	font-size:24px;
+	vertical-align:center;
+	horizontal-align:center;
+	font-weight:bold;
+	overflow: clip clip;
+	height:30px;
+}
+
+#iconlist{
+	height:50px;
+	width:350px;
+	horizontal-align:left;
+	vertical-align:top;
+	margin-left:150px;
+	margin-top:12px;
+	flow-children:right;
+
+	transition-property:position;
+    transition-duration:0.5s;
+
+    position:0px 0px 0px;
+}
+.iconone{
+	opacity:0.5;
+	height:33px;
+	width:33px;
+	margin-right:17px;
+	background-repeat:no-repeat;
+	background-size:33px 33px;
+	background-position:center center;
+}
+.iconone:hover{
+	opacity:1;
+}
+
+#icon-guide{
+	background-image: url('file://{images}/custom_game/question.png');
+}
+
+
+#panel_guide{
+	width:1690px;
+	height:1020px;
+	background-image: url("file://{images}/backgrounds/gallery_background_png.vtex");
+    background-size:100% 100%;
+    box-shadow: fill #00000066 -4px -4px 8px 8px;
+    vertical-align: center;
+    horizontal-align:center;
+    z-index:5000;
+    transition-property: opacity, transform, pre-transform-scale2d, wash-color, position;
+    transition-duration: 0.4s;
+    transition-delay: 0s;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
+}
+
+.text_close_panel{
+	/*width:800px;*/
+	color:#ddd;
+	font-size:24px;
+}
+
+.icon_close{
+	width:30px;
+	height:30px;
+	horizontal-align:right;
+	vertical-align: top;
+	margin-top:30px;
+	margin-right:50px;
+	transition-property:transform;
+	transition-duration:0.2s;
+	margin-bottom:20px;
+}
+.icon_close:hover{
+	transform: scale3d( 1.5, 1.5, 1.5);
+}

@@ -1,0 +1,16 @@
+<root>
+	<scripts>
+		<include src = "file://{resources}/scripts/custom_game/player_action.js"/>
+		<include src = "file://{resources}/scripts/custom_game/select_unit_handler.js"/>
+		<include src = "file://{resources}/scripts/custom_game/setup.js"/>
+		<include src = "file://{resources}/scripts/custom_game/key_binding.js" />
+	</scripts>
+	<Panel>
+		<!--<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/key_binding.xml" />-->
+		<CustomUIElement type="Hud"	layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
+		<CustomUIElement type="Hud"	layoutfile="file://{resources}/layout/custom_game/main_hud.xml" />
+		<CustomUIElement type="FlyoutScoreboard"    layoutfile="file://{resources}/layout/custom_game/has_flyout_scoreboard.xml" />
+		<CustomUIElement type="GameSetup"    layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
+		
+	</Panel>
+</root>
