@@ -1,9 +1,32 @@
 (function () {
-    GameEvents.Subscribe( "init_time", InitShowTime );
-    GameEvents.Subscribe( "show_time", OnShowTime );
+    //GameEvents.Subscribe( "init_time", InitShowTime );
+    //GameEvents.Subscribe( "show_time", OnShowTime );
+    
+    CustomNetTables.SubscribeNetTableListener( "player_info_table", PlayerInfoTableChanged );
 })();
 
-CustomNetTables.SubscribeNetTableListener( "data_table", DataTableChanged );
+function PlayerInfoTableChanged(table,key, data){
+    if (key == 'player_info'){
+        for (var i in data.data){
+            var info = data.data[i];
+            
+            // var is_muted = Game.IsPlayerMuted( info.player_id );
+            // var is_local_player = Players.GetLocalPlayer() == info.player_id ? true : false;
+            
+            $.Msg("changed " + info.money);
+
+            // 渲染玩家详情面板
+            // $('#player_name_'+player_id).steamid = info.steam_id;
+            // $('#avatar_player_'+player_id).steamid = info.steam_id;
+
+            // $('#player_details_damage_'+player_id).text = (info.hero_damage || 0) + '-' + (info.hero_damaged || 0);
+            // $("#player_details_win_"+player_id).text = info.win_round+'-'+info.lose_round;
+            // $("#player_details_money_"+player_id).text = '$'+info.total_money;
+
+
+        }
+    }
+}
 
 function DataTableChanged(table,key,data){
 	if (key == "hide_damage_stat"){
