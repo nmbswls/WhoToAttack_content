@@ -23,7 +23,7 @@ Label{
 	horizontal-align:left;
 }
 .board_line_content{
-	width:200px;
+	width:800px;
 	height:40px;
 	/*background-color: rgba(0,0,0,0.8);*/
 	/*background-image: url("s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex");*/
@@ -31,7 +31,7 @@ Label{
 	/*border-radius: 5px;*/
 }
 .board_line_plus{
-	width:200px;
+	width:3000px;
 	height:60px;
 	horizontal-align:center;
 	vertical-align:center;
@@ -44,14 +44,14 @@ Label{
 	font-weight:bold;
 }
 #board_round{
-	width:180px;
+	width:240px;
 	height:150px;
 	flow-children:down;
 	horizontal-align:center;
 }
 #board_top{
 	width:900px;
-	height:120px;
+	height:160px;
 	horizontal-align:center;
 	vertical-align:top;
 	flow-children:right;
@@ -95,7 +95,7 @@ Label{
 }
 .board_line_title{
 	margin-top:10px;
-	width:200px;
+	width:280px;
 	height:20px;
 	/*background-color: rgba(0,0,0,0.5);*/
 }

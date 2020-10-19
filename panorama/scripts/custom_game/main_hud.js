@@ -2,6 +2,8 @@
     //GameEvents.Subscribe( "init_time", InitShowTime );
     //GameEvents.Subscribe( "show_time", OnShowTime );
     
+    GameEvents.Subscribe( "show_cards", OnShowCards);
+    
     CustomNetTables.SubscribeNetTableListener( "player_info_table", PlayerInfoTableChanged );
 })();
 
@@ -72,6 +74,9 @@ function OnShowTime(keys){
 	}
 	
 	
+}
+function OnShowCards(keys){
+	$('#hand_cards').text = keys.hand_cards;
 }
 
 

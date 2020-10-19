@@ -46,6 +46,11 @@
 						<Label id = "left_time" text = "#timeprepare"></Label>
 					</Panel>
 				</Panel>
+                <Panel class = "board_line_content">
+					<Panel class = "align-container">
+						<Label id = "hand_cards" text = "#cards"></Label>
+					</Panel>
+				</Panel>
 				
 			</Panel>
 			
