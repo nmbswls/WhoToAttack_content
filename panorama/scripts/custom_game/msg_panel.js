@@ -4,6 +4,7 @@ function OnMsgBottom(args) {
 	var color = args.Color || "#aa000088";
 	var sound = args.Sound || "General.CastFail_NoMana";
 	var msg = args.Message;
+    var duration = args.Duration || 3;
 
 	if (msg == null || msg == "") return;
 
@@ -20,8 +21,10 @@ function OnMsgBottom(args) {
 		if (m_MsgSeqId == seqId)
 			$("#bottom_msg_panel").style.transform = 'scale3d(1, 1, 1)'
 	})
+    
+    $.Msg("dur " + duration);
 
-	$.Schedule(3, function() {
+	$.Schedule(duration, function() {
 		if (m_MsgSeqId == seqId)
 			$("#bottom_msg_panel").style.opacity = 0;
 	})
