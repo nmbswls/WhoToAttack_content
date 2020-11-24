@@ -8,8 +8,33 @@
         <include src="file://{resources}/scripts/custom_game/main_hud.js" />
     </scripts>
 	
+    <snippets>
+        <snippet name="Card">
+            <Button class="CardButton">
+                <Panel id="CardBG" hittest="false" >
+                    <Panel id="CardTopBar">
+                        <Label id="CardName" class="TitleFont" text="#CardSelection_Close"/>
+                    </Panel>
+                    <Image id="CardImage" />
+                </Panel>
+            </Button>
+        </snippet>
+    </snippets>
+    
+    
+    
+    
 	<Panel style="width:100%;height:100%;" hittest="false">
-		<Panel id="board_top">
+		
+        <Panel id="CardSelection" hittest="false" >
+            <Panel id="CardSelection_Body" hittest="false" >
+            </Panel>
+            <Button id="CardSelection_CloseButton" onactivate="CloseCardSelection()" onmouseover="DOTAShowTextTooltip('#CardSelection_Close_Description')" onmouseout="DOTAHideTextTooltip()" >
+                <Label class="CardSelection_CloseButtonLabel" text="#CardSelection_Close" />
+            </Button>
+        </Panel>
+        
+        <Panel id="board_top">
 			<!-- <Panel id = "board_round"> -->
                 <!-- <Panel class = "board_line_title"> -->
                     <!-- <Label id = "total_time" text = "00:00:00"></Label> -->
