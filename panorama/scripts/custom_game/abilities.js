@@ -64,9 +64,64 @@ function AutoShowAbilityLevel(){
 	$.Schedule(0.1, AutoShowAbilityLevel);
 }
 
+function EnterRemoveMode(){
+	m_InRemoveMode = true;
+	var abilities = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("AbilitiesAndStatBranch");
+	var m_LocalHero = Players.GetPlayerHeroEntityIndex(Players.GetLocalPlayer());
+	for(var i = 0; i < 12; i++){
+		var ability = abilities.FindChildTraverse("Ability" + i)
+		if (ability != null){
+			var abilityButton = ability.FindChildTraverse("AbilityButton");
+			var abilityName = Abilities.GetAbilityName(Entities.GetAbility(m_LocalHero, i));
+			// if (abilityName == "empty_1" || 
+			// 	abilityName == "empty_2" ||
+			// 	abilityName == "empty_3" ||
+			// 	abilityName == "empty_4" ||
+			// 	abilityName == "empty_5" ||
+			// 	abilityName == "empty_6" ||
+			// 	abilityName == "empty_a1" ||
+			// 	abilityName == "empty_a2" ||
+			// 	abilityName == "empty_a3" ||
+			// 	abilityName == "empty_a4" ||
+			// 	abilityName == "empty_a5" ||
+			// 	abilityName == "empty_a6"
+			// 	) {
+			// 	continue; // 空技能无法移除
+			// }
+			abilityButton.style.washColor = "#881212";
+			abilityButton.SetPanelEvent("oncontextmenu", (function(arg){
+				return function(){
+					if (!m_InRemoveMode) return;
+					var abilityName = Abilities.GetAbilityName(Entities.GetAbility(m_LocalHero, arg));
+					if (GameUI.IsControlDown()) {
+						abilityName = "Canceled"
+					}
+					GameEvents.SendCustomGameEventToServer("ConfirmAbilityRemove", {
+						AbilityName:abilityName
+					})
+					EndRemoveMode();
+				}
+			})(i));
+		}
+	}
+}
 
+function EndRemoveMode(){
+	m_InRemoveMode = false;
+	var abilities = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("AbilitiesAndStatBranch");
+	for(var i = 0; i < 12; i++){
+		var ability = abilities.FindChildTraverse("Ability" + i)
+		if (ability != null){
+			var abilityButton = ability.FindChildTraverse("AbilityButton")
+			abilityButton.style.washColor = "#ffffff";
+		}
+	}
+}
 
 (function() {
-    $.Msg("load");
 	$.Schedule(0.3, AutoShowAbilityLevel)
+    
+    GameEvents.Subscribe("player_remove_ability", EnterRemoveMode);
+	GameEvents.Subscribe("player_confirm_ability_remove", EndRemoveMode);
+    
 })();
