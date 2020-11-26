@@ -92,12 +92,13 @@ function EnterRemoveMode(){
 			abilityButton.SetPanelEvent("oncontextmenu", (function(arg){
 				return function(){
 					if (!m_InRemoveMode) return;
-					var abilityName = Abilities.GetAbilityName(Entities.GetAbility(m_LocalHero, arg));
+                    
+					var abilityIdx = arg;
 					if (GameUI.IsControlDown()) {
-						abilityName = "Canceled"
+						abilityIdx = -1
 					}
 					GameEvents.SendCustomGameEventToServer("ConfirmAbilityRemove", {
-						AbilityName:abilityName
+						AbilityIdx: abilityIdx
 					})
 					EndRemoveMode();
 				}
