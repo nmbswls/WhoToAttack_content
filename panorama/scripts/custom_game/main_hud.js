@@ -7,6 +7,20 @@
     CustomNetTables.SubscribeNetTableListener( "player_info_table", PlayerInfoTableChanged );
 })();
 
+function find_dota_hud_element(id){
+    var hudRoot;
+    for(panel=$.GetContextPanel();panel!=null;panel=panel.GetParent()){
+        hudRoot = panel;
+    }
+    var comp = hudRoot.FindChildTraverse(id);
+    return comp;
+}
+
+find_dota_hud_element('GuideFlyout').style['opacity'] = '0';
+find_dota_hud_element('ItemList').style['opacity'] = '0';
+find_dota_hud_element('GridUpgradesTab').style['opacity'] = '0';
+find_dota_hud_element('GridNeutralsTab').style['opacity'] = '0';
+
 function PlayerInfoTableChanged(table,key, data){
     if (key == 'player_info'){
         for (var i in data.data){
