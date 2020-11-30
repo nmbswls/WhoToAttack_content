@@ -3,6 +3,7 @@
     //GameEvents.Subscribe( "show_time", OnShowTime );
     
     GameEvents.Subscribe( "show_cards", OnShowCards);
+    GameEvents.Subscribe( "ping_open_doors", OnPingOpenDoors);
     
     CustomNetTables.SubscribeNetTableListener( "player_info_table", PlayerInfoTableChanged );
 })();
@@ -114,6 +115,12 @@ function OnShowCards(keys){
 
     $("#CardSelection").SetHasClass("show", true);
     $("#CardSelection_Body").AddClass("draw");
+}
+
+function OnPingOpenDoors(keys) {
+    
+    var loc = [keys.x, keys.y, keys.z];
+    GameUI.PingMinimapAtLocation(loc);
 }
 
 function InitCardPanelEvent(panel) {
