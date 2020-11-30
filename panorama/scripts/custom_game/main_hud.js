@@ -120,7 +120,11 @@ function OnShowCards(keys){
 function OnPingOpenDoors(keys) {
     
     var loc = [keys.x, keys.y, keys.z];
-    GameUI.PingMinimapAtLocation(loc);
+    for(var i=0;i<3;i++){
+        $.Schedule(i*0.8, function(){
+            GameUI.PingMinimapAtLocation(loc);
+        });
+    }
 }
 
 function InitCardPanelEvent(panel) {
