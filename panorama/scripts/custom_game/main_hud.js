@@ -21,6 +21,8 @@ find_dota_hud_element('GuideFlyout').style['opacity'] = '0';
 find_dota_hud_element('ItemList').style['opacity'] = '0';
 find_dota_hud_element('GridUpgradesTab').style['opacity'] = '0';
 find_dota_hud_element('GridNeutralsTab').style['opacity'] = '0';
+find_dota_hud_element('QuickBuyRows').style['opacity'] = '0';
+find_dota_hud_element('DeliverItemsButton').style['opacity'] = '0';
 
 function PlayerInfoTableChanged(table,key, data){
     if (key == 'player_info'){
