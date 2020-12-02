@@ -1,24 +1,6 @@
-function SetCardAbilityPanelEvent(panel,abilityName) {
-   
-    var parent = $("#AbilitySelectorAbilityBody");
-
-   panel.SetPanelEvent("onactivate", function(){
-        GameEvents.SendCustomGameEventToServer("CardSelect", {
-            ability_name : abilityName,
-            player_id : Players.GetLocalPlayer(),
-            spell_book_selected: $("#SaveSpellBookCheckBox").IsSelected(),
-            ui_secret: parent.ui_secret
-        });
-        $("#AbilitySelectorPanelRoot").SetHasClass("Show", false);
-   });
-
-   panel.SetPanelEvent("onmouseover", function() {
-        $.DispatchEvent("DOTAShowAbilityTooltip", panel, abilityName);
-   });
-   panel.SetPanelEvent("onmouseout", function() {
-        $.DispatchEvent("DOTAHideAbilityTooltip");
-   })    
-}
+(function () {
+    GameEvents.Subscribe( "show_cards", OnShowCards);
+})();
 
 function OnShowCards(keys){
 	$('#hand_cards').text = keys.hand_cards;
@@ -38,7 +20,11 @@ function OnShowCards(keys){
             panel.BLoadLayoutSnippet("Card");
             InitCardPanelEvent(panel);
         }
+        
+        var abilityPanel = panel.FindChildTraverse("CardBottomBar");
+        InitAbilityEvent(abilityPanel, name);
         //panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/card/"+heroName+".png");
+        //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
         panel.FindChildTraverse("CardName").text = $.Localize(name);
         panel.idx =  k
     }
@@ -47,21 +33,25 @@ function OnShowCards(keys){
     $("#CardSelection_Body").AddClass("draw");
 }
 
-function OnPingOpenDoors(keys) {
-    
-    var loc = [keys.x, keys.y, keys.z];
-    for(var i=0;i<3;i++){
-        $.Schedule(i*0.8, function(){
-            GameUI.PingMinimapAtLocation(loc);
-        });
-    }
-}
+
 
 function InitCardPanelEvent(panel) {
     panel.SetPanelEvent("onactivate", function() {
         
         CardPicked(panel.idx)
     });
+    
+    
+}
+
+function InitAbilityEvent(abilityPanel, heroName) {
+    // 映射
+   abilityPanel.SetPanelEvent("onmouseover", function() {
+        $.DispatchEvent("DOTAShowAbilityTooltip", abilityPanel, "lone_druid_spirit_bear_entangle");
+   });
+   abilityPanel.SetPanelEvent("onmouseout", function() {
+        $.DispatchEvent("DOTAHideAbilityTooltip");
+   })    
 }
 
 function CloseCardSelection() {

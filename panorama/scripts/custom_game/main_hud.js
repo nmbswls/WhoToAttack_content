@@ -2,7 +2,6 @@
     //GameEvents.Subscribe( "init_time", InitShowTime );
     //GameEvents.Subscribe( "show_time", OnShowTime );
     
-    GameEvents.Subscribe( "show_cards", OnShowCards);
     GameEvents.Subscribe( "ping_open_doors", OnPingOpenDoors);
     
     CustomNetTables.SubscribeNetTableListener( "player_info_table", PlayerInfoTableChanged );
@@ -92,32 +91,7 @@ function OnShowTime(keys){
 	
 	
 }
-function OnShowCards(keys){
-	$('#hand_cards').text = keys.hand_cards;
-    
-    var names = keys.hand_cards.split(',')
-    var cardSelectionPanel = $("#CardSelection_Body");
-    
-    
-    for (var k in names) {
-        var name = names[k];
-        if(name == null || name == "")continue;
-        $.Msg("names: " + name);
-        var panelID = "card_"+k;
-        var panel = cardSelectionPanel.FindChildTraverse(panelID);
-        if (panel == undefined && panel == null) {
-            panel = $.CreatePanel("Panel", cardSelectionPanel, panelID);
-            panel.BLoadLayoutSnippet("Card");
-            InitCardPanelEvent(panel);
-        }
-        //panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/card/"+heroName+".png");
-        panel.FindChildTraverse("CardName").text = $.Localize(name);
-        panel.idx =  k
-    }
 
-    $("#CardSelection").SetHasClass("show", true);
-    $("#CardSelection_Body").AddClass("draw");
-}
 
 function OnPingOpenDoors(keys) {
     
@@ -129,26 +103,5 @@ function OnPingOpenDoors(keys) {
     }
 }
 
-function InitCardPanelEvent(panel) {
-    panel.SetPanelEvent("onactivate", function() {
-        
-        CardPicked(panel.idx)
-    });
-}
-
-function CloseCardSelection() {
-    $("#CardSelection").SetHasClass("show", false);
-    $("#CardSelection_Body").RemoveClass("draw");
-}
-
-function CardPicked(cardIdx){
-   
-    GameEvents.SendCustomGameEventToServer("PickCard", {
-        card_idx : cardIdx
-    });
-    $.Msg("clicked " + cardIdx);
-    $("#CardSelection").SetHasClass("show", false);
-    $("#CardSelection_Body").RemoveClass("draw");
-}
 
 

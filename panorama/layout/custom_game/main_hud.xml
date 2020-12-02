@@ -6,6 +6,7 @@
 
     <scripts>
         <include src="file://{resources}/scripts/custom_game/main_hud.js" />
+        <include src="file://{resources}/scripts/custom_game/drawcards.js" />
     </scripts>
 	
     <snippets>
@@ -13,9 +14,19 @@
             <Button class="CardButton">
                 <Panel id="CardBG" hittest="false" >
                     <Panel id="CardTopBar">
-                        <Label id="CardName" class="TitleFont" text="#CardSelection_Close"/>
+                        <Label id="CardName" class="TitleFont" text=""/>
                     </Panel>
                     <Image id="CardImage" />
+                    
+                    <Panel id="CardBottomBar">
+                        <Label id="CardDesp" class="TitleFont" text = "恶魔/1*" />
+                        <!-- <Label class="TitleFont" text = "cnmcnm" /> -->
+                        <Image id="CardPrice" src="s2r://panorama/images/logos/dota_logo_bright_psd.vtex"/>
+                    </Panel>
+                    
+                    
+                    
+                    <!-- <Label id="CardPrice" text = "ccccasdddddddcc" /> -->
                 </Panel>
             </Button>
         </snippet>
