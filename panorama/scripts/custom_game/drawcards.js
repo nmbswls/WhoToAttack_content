@@ -1,6 +1,15 @@
 (function () {
     GameEvents.Subscribe( "show_cards", OnShowCards);
+    GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
 })();
+
+function OnPickCardRsp(keys){
+    var idx = keys.buy_idx;
+    var cardSelectionPanel = $("#CardSelection_Body");
+	var panelID = "card_"+idx;
+	var panel = cardSelectionPanel.FindChildTraverse(panelID);
+	panel.style['opacity'] = 0;
+}
 
 function OnShowCards(keys){
 	$('#hand_cards').text = keys.hand_cards;
@@ -20,7 +29,7 @@ function OnShowCards(keys){
             panel.BLoadLayoutSnippet("Card");
             InitCardPanelEvent(panel);
         }
-        
+        panel.style['opacity'] = 1;
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
         InitAbilityEvent(abilityPanel, name);
         //panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/card/"+heroName+".png");
