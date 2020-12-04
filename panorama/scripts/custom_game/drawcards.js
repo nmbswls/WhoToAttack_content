@@ -3,12 +3,28 @@
     GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
 })();
 
+function OnRefreshCard(){
+	var cards = keys.cards.split(',');
+	MY_DRAW_CHESS_LIST = {};
+    if (cards && cards.length>1){
+        for (var i=0;i<cards.length;i++){
+            if (cards[i]){
+                MY_DRAW_CHESS_LIST[i] = cards[i];
+            }
+        }
+    }
+		
+}
+
+DRAW_CARD_NAMES = {}
+
 function OnPickCardRsp(keys){
     var idx = keys.buy_idx;
     var cardSelectionPanel = $("#CardSelection_Body");
 	var panelID = "card_"+idx;
 	var panel = cardSelectionPanel.FindChildTraverse(panelID);
 	panel.style['opacity'] = 0;
+	DRAW_CARD_NAMES[buy_index] = null;
 }
 
 function OnShowCards(keys){
