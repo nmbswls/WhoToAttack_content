@@ -1,7 +1,27 @@
 (function () {
     GameEvents.Subscribe( "show_cards", OnShowCards);
     GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
+    GameEvents.Subscribe( "lock_cards_rsp", OnLockCardRsp);
 })();
+
+DRAW_CARD_NAMES = {}
+CARD_LOCKED = false;
+CARD_SHOW_STATE = false;
+
+fuction CardShowHide(){
+    CARD_SHOW_STATE = !CARD_SHOW_STATE;
+    if(CARD_SHOW_STATE){
+    	//var cardSelectionPanel = $("#CardSelection_Body").style[];
+    }else{
+	//var cardSelectionPanel = $("#CardSelection_Body").style[];    
+    }
+}
+
+function CardLockUnlock(){
+    GameEvents.SendCustomGameEventToServer("lock_cards_req", {
+        locked : !CARD_LOCKED
+    });
+}
 
 function OnRefreshCard(){
 	var cards = keys.cards.split(',');
@@ -16,7 +36,10 @@ function OnRefreshCard(){
 		
 }
 
-DRAW_CARD_NAMES = {}
+functionn OnLockCardRsp(keys){
+	var locked = keys.locked;
+	
+}
 
 function OnPickCardRsp(keys){
     var idx = keys.buy_idx;
