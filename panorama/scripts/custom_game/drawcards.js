@@ -1,4 +1,5 @@
 (function () {
+    //GameEvents.Subscribe( "show_cards", OnShowCards);
     GameEvents.Subscribe( "show_cards", OnShowCards);
     GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
     GameEvents.Subscribe( "lock_cards_rsp", OnLockCardRsp);
@@ -8,12 +9,16 @@ DRAW_CARD_NAMES = {}
 CARD_LOCKED = false;
 CARD_SHOW_STATE = false;
 
-fuction CardShowHide(){
+function CardShowHide(){
     CARD_SHOW_STATE = !CARD_SHOW_STATE;
     if(CARD_SHOW_STATE){
-    	//var cardSelectionPanel = $("#CardSelection_Body").style[];
+    	//$("#CardSelection_Body").style['opacity'] = 1;
+        $("#CardSelection").SetHasClass("show", true);
+        $("#CardSelection_Body").AddClass("draw");
     }else{
-	//var cardSelectionPanel = $("#CardSelection_Body").style[];    
+        //$("#CardSelection_Body").style['opacity'] = 0;    
+        $("#CardSelection").SetHasClass("show", false);
+        $("#CardSelection_Body").RemoveClass("draw");
     }
 }
 
@@ -33,25 +38,29 @@ function OnRefreshCard(){
             }
         }
     }
-		
+	OnShowCards();
 }
 
-functionn OnLockCardRsp(keys){
+function OnLockCardRsp(keys){
 	var locked = keys.locked;
 	
 }
 
 function OnPickCardRsp(keys){
+    
     var idx = keys.buy_idx;
     var cardSelectionPanel = $("#CardSelection_Body");
 	var panelID = "card_"+idx;
 	var panel = cardSelectionPanel.FindChildTraverse(panelID);
+    $.Msg("on pick card rsp " + panelID);
 	panel.style['opacity'] = 0;
 	DRAW_CARD_NAMES[buy_index] = null;
 }
 
 function OnShowCards(keys){
 	$('#hand_cards').text = keys.hand_cards;
+    
+    CARD_SHOW_STATE = true;
     
     var names = keys.hand_cards.split(',')
     var cardSelectionPanel = $("#CardSelection_Body");
@@ -113,6 +122,6 @@ function CardPicked(cardIdx){
         card_idx : cardIdx
     });
     $.Msg("clicked " + cardIdx);
-    $("#CardSelection").SetHasClass("show", false);
-    $("#CardSelection_Body").RemoveClass("draw");
+    //$("#CardSelection").SetHasClass("show", false);
+    //$("#CardSelection_Body").RemoveClass("draw");
 }

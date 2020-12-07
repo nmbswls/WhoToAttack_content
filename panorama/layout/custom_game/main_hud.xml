@@ -41,15 +41,20 @@
             <Panel id="CardSelection_Body" hittest="false" >
             </Panel>
             <Button id="CardSelection_CloseButton" onactivate="CloseCardSelection()" onmouseover="DOTAShowTextTooltip('#CardSelection_Close_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label class="CardSelection_CloseButtonLabel" text="#CardSelection_Close" />
+                <Label class="CardSelection_CloseButtonLabel" text="关闭" />
             </Button>
 		
-	    <Button id="CardSelection_Lock" onactivate="CardLockUnlock()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label class="CardSelection_LockLabel" text="#CardSelection_Lock" />
+            <Button id="CardSelection_Lock" onactivate="CardLockUnlock()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
+                    <Label class="CardSelection_LockLabel" text="锁" />
             </Button>
         </Panel>
         
         <Panel id="board_top">
+        
+            <Button id="CardSelection_ShowHide" onactivate="CardShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
+                <Label class="CardSelection_ShowHide" text="开关界面" />
+            </Button>
+        
 			<!-- <Panel id = "board_round"> -->
                 <!-- <Panel class = "board_line_title"> -->
                     <!-- <Label id = "total_time" text = "00:00:00"></Label> -->
@@ -89,9 +94,7 @@
                 <Panel class = "board_line_content">
 					<Panel class = "align-container">
 						<Label id = "hand_cards" text = "#cards"></Label>
-						<Button id="CardSelection_ShowHide" onactivate="CardShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-							<Label class="CardSelection_ShowHide" text="#CardSelection_Lock" />
-						    </Button>
+						
 					</Panel>
 				</Panel>
 				
