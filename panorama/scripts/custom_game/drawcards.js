@@ -3,11 +3,22 @@
     GameEvents.Subscribe( "show_cards", OnShowCards);
     GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
     GameEvents.Subscribe( "lock_cards_rsp", OnLockCardRsp);
+    
+    
 })();
 
 DRAW_CARD_NAMES = {}
 CARD_LOCKED = false;
 CARD_SHOW_STATE = false;
+
+
+
+function CardDrawNew(){
+    GameEvents.SendCustomGameEventToServer("draw_cards_req", {
+        
+    });
+}
+
 
 function CardShowHide(){
     CARD_SHOW_STATE = !CARD_SHOW_STATE;
@@ -43,7 +54,10 @@ function OnRefreshCard(){
 
 function OnLockCardRsp(keys){
 	var locked = keys.locked;
-	
+	CARD_LOCKED = locked;
+    
+    $("#CardSelection_Lock_Label").text = locked ? "解锁" : "锁定";
+    
 }
 
 function OnPickCardRsp(keys){
@@ -112,8 +126,16 @@ function InitAbilityEvent(abilityPanel, heroName) {
 }
 
 function CloseCardSelection() {
+    
+    if(!CARD_SHOW_STATE){
+        return;
+    }
+    
+    CARD_SHOW_STATE = false;
+    
     $("#CardSelection").SetHasClass("show", false);
     $("#CardSelection_Body").RemoveClass("draw");
+
 }
 
 function CardPicked(cardIdx){

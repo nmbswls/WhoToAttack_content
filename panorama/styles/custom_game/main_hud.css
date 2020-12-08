@@ -219,6 +219,13 @@ Label{
 	transition-duration: 0.1s;
 }
 
+.button_title{
+	color:#bbbbbb;
+	font-size:18px;
+	horizontal-align:center;
+	vertical-align:center;
+}
+
 #CardName
 {
 	vertical-align: center;
@@ -229,8 +236,8 @@ Label{
 	color: #ffffff;
 	font-size: 36px;
 	text-shadow: 2px 2px 2px 2 #000000;
-	
 }
+
 #CardDesp{
     vertical-align: center;
     horizontal-align: left;
@@ -264,6 +271,15 @@ Label{
 	opacity: 1;
 }
 
+#CardSelection_Left
+{
+    margin-left: 180px;
+    horizontal-align: left;
+	vertical-align: center;
+    width: 200px;
+	height: 200px;
+}
+
 #CardSelection_Body
 {
 	horizontal-align: center;
@@ -274,7 +290,7 @@ Label{
 	transform: translateY(5000px) scale3d(0.1, 0.1, 0.1);
 
 	transition-property: transform;
-	transition-duration: 0.3s;
+	transition-duration: 0.1s;
 	transition-timing-function: ease-in-out;
 }
 
@@ -346,25 +362,43 @@ Label{
 }
 
 #CardSelection_CloseButton{
-    margin-top: 550px;
+    margin-top: 450px;
     border-radius: 15px;
     horizontal-align: center;
 	vertical-align: center;
-    width: 50px;
-	height: 50px;
+    width: 120px;
+	height: 75px;
     background-color: #ffffffff;
     padding: 20px;
 }
 
+#CardSelection_CloseButton Label{
+    color:#bbbbbb;
+	font-size:24px;
+	horizontal-align:center;
+	vertical-align:center;
+}
+
 #CardSelection_Lock{
-    margin-left: 50px;
+    margin-top: 0px;
     border-radius: 15px;
     horizontal-align: left;
 	vertical-align: center;
     width: 50px;
 	height: 50px;
     background-color: #ffffffff;
-    padding: 20px;
+    padding: 5px;
+}
+
+#CardSelection_Draw{
+    margin-top: 120px;
+    border-radius: 15px;
+    horizontal-align: left;
+	vertical-align: center;
+    width: 50px;
+	height: 50px;
+    background-color: #ffffffff;
+    padding: 5px;
 }
 
 #CardSelection_ShowHide{
@@ -375,5 +409,5 @@ Label{
     width: 100px;
 	height: 50px;
     background-color: #ffffffff;
-    padding: 20px;
+    padding: 5px;
 }

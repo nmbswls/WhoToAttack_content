@@ -41,18 +41,25 @@
             <Panel id="CardSelection_Body" hittest="false" >
             </Panel>
             <Button id="CardSelection_CloseButton" onactivate="CloseCardSelection()" onmouseover="DOTAShowTextTooltip('#CardSelection_Close_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label class="CardSelection_CloseButtonLabel" text="关闭" />
+                <Label text="关闭" />
             </Button>
 		
-            <Button id="CardSelection_Lock" onactivate="CardLockUnlock()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                    <Label class="CardSelection_LockLabel" text="锁" />
-            </Button>
+            <Panel id="CardSelection_Left">
+                <Button id="CardSelection_Lock" onactivate="CardLockUnlock()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
+                    <Label id="CardSelection_Lock_Label" class = "button_title" text="锁定" />
+                </Button>
+                <Button id="CardSelection_Draw" onactivate="CardDrawNew()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
+                    <Label id="CardSelection_Draw_Label" class = "button_title" text="抽卡" />
+                </Button>
+            </Panel>
+        
+            
         </Panel>
         
         <Panel id="board_top">
         
             <Button id="CardSelection_ShowHide" onactivate="CardShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label class="CardSelection_ShowHide" text="开关界面" />
+                <Label class = "button_title" text="开关界面" />
             </Button>
         
 			<!-- <Panel id = "board_round"> -->
