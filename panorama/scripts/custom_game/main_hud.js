@@ -22,6 +22,17 @@ find_dota_hud_element('GridUpgradesTab').style['opacity'] = '0';
 find_dota_hud_element('GridNeutralsTab').style['opacity'] = '0';
 find_dota_hud_element('QuickBuyRows').style['opacity'] = '0';
 find_dota_hud_element('DeliverItemsButton').style['opacity'] = '0';
+find_dota_hud_element('SearchContainer').style['opacity'] = '0';
+find_dota_hud_element('RequestSuggestion').style['opacity'] = '0';
+find_dota_hud_element('PopularItems').style['opacity'] = '0';
+find_dota_hud_element('ToggleMinimalShop').style['opacity'] = '0';
+
+
+
+
+function OnBackHome(){
+    $.Msg("cnmcnmcnm OnBackHome");
+}
 
 function PlayerInfoTableChanged(table,key, data){
     if (key == 'player_info'){

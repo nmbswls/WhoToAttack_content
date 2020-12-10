@@ -7,6 +7,7 @@
     
 })();
 
+Game.AddCommand( "+ShowHideCards", CardShowHide, "",0);
 DRAW_CARD_NAMES = {}
 CARD_LOCKED = false;
 CARD_SHOW_STATE = false;
@@ -83,7 +84,7 @@ function OnShowCards(keys){
     for (var k in names) {
         var name = names[k];
         if(name == null || name == "")continue;
-        $.Msg("names: " + name);
+        //$.Msg("names: " + name);
         var panelID = "card_"+k;
         var panel = cardSelectionPanel.FindChildTraverse(panelID);
         if (panel == undefined && panel == null) {
