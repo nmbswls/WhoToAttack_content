@@ -1,6 +1,6 @@
 (function () {
     //GameEvents.Subscribe( "show_cards", OnShowCards);
-    GameEvents.Subscribe( "show_cards", OnShowCards);
+    GameEvents.Subscribe( "show_cards", OnRefreshCard);
     GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
     GameEvents.Subscribe( "lock_cards_rsp", OnLockCardRsp);
     
@@ -40,16 +40,20 @@ function CardLockUnlock(){
     });
 }
 
-function OnRefreshCard(){
-	var cards = keys.cards.split(',');
-	MY_DRAW_CHESS_LIST = {};
-    if (cards && cards.length>1){
-        for (var i=0;i<cards.length;i++){
-            if (cards[i]){
-                MY_DRAW_CHESS_LIST[i] = cards[i];
-            }
-        }
+function OnRefreshCard(keys){
+    var cardList = keys.hand_cards;
+    
+    $.Msg("cnmcnmcnmcnm OnRefreshCard " + keys.hand_cards[0]);
+    
+	//var cards = keys.cards.split(',');
+	DRAW_CARD_NAMES = new Array(5);
+    
+    for(var n in cardList){
+        var cardName = cardList[n];
+        $.Msg("refresh card " + cardName);
+        DRAW_CARD_NAMES[n] = cardName;
     }
+    
 	OnShowCards();
 }
 
@@ -69,21 +73,20 @@ function OnPickCardRsp(keys){
 	var panel = cardSelectionPanel.FindChildTraverse(panelID);
     $.Msg("on pick card rsp " + panelID);
 	panel.style['opacity'] = 0;
-	DRAW_CARD_NAMES[buy_index] = null;
+	DRAW_CARD_NAMES[idx] = null;
 }
 
-function OnShowCards(keys){
-	$('#hand_cards').text = keys.hand_cards;
-    
+function OnShowCards(){
+	
     CARD_SHOW_STATE = true;
     
-    var names = keys.hand_cards.split(',')
+    var names = DRAW_CARD_NAMES;
     var cardSelectionPanel = $("#CardSelection_Body");
     
     
     for (var k in names) {
         var name = names[k];
-        if(name == null || name == "")continue;
+        
         //$.Msg("names: " + name);
         var panelID = "card_"+k;
         var panel = cardSelectionPanel.FindChildTraverse(panelID);
@@ -92,13 +95,20 @@ function OnShowCards(keys){
             panel.BLoadLayoutSnippet("Card");
             InitCardPanelEvent(panel);
         }
-        panel.style['opacity'] = 1;
+        
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
         InitAbilityEvent(abilityPanel, name);
+        panel.idx =  k
+        
+        if(name == null || name == ""){
+            panel.style['opacity'] = 0;
+            continue;
+        }
+        panel.style['opacity'] = 1;
         //panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/card/"+heroName+".png");
         //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
         panel.FindChildTraverse("CardName").text = $.Localize(name);
-        panel.idx =  k
+        
     }
 
     $("#CardSelection").SetHasClass("show", true);
