@@ -50,7 +50,7 @@ function OnRefreshCard(keys){
     
     for(var n in cardList){
         var cardName = cardList[n];
-        $.Msg("refresh card " + cardName);
+        //$.Msg("refresh card " + cardName);
         DRAW_CARD_NAMES[n] = cardName;
     }
     
@@ -87,7 +87,7 @@ function OnShowCards(){
     for (var k in names) {
         var name = names[k];
         
-        //$.Msg("names: " + name);
+        $.Msg("names: " + name);
         var panelID = "card_"+k;
         var panel = cardSelectionPanel.FindChildTraverse(panelID);
         if (panel == undefined && panel == null) {
@@ -95,7 +95,15 @@ function OnShowCards(){
             panel.BLoadLayoutSnippet("Card");
             InitCardPanelEvent(panel);
         }
-        
+        var unitData = GameUI.UnitInfoConfig[name]
+		
+		var extra = ''
+		if (unitData != null) {
+			var cc = unitData['class'];
+			$.Msg('name ' + name + " c " + cc)
+			extra += ' ' + cc;
+		}
+		
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
         InitAbilityEvent(abilityPanel, name);
         panel.idx =  k
@@ -107,7 +115,7 @@ function OnShowCards(){
         panel.style['opacity'] = 1;
         //panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/card/"+heroName+".png");
         //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
-        panel.FindChildTraverse("CardName").text = $.Localize(name);
+        panel.FindChildTraverse("CardName").text = $.Localize(name) + extra;
         
     }
 
