@@ -102,6 +102,9 @@ function OnShowCards(){
 			var cc = unitData['class'];
 			$.Msg('name ' + name + " c " + cc)
 			extra += ' ' + cc;
+			
+			var cost = unitData['cost']
+			extra += '/' + cost;
 		}
 		
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
@@ -115,7 +118,9 @@ function OnShowCards(){
         panel.style['opacity'] = 1;
         //panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/card/"+heroName+".png");
         //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
-        panel.FindChildTraverse("CardName").text = $.Localize(name) + extra;
+        panel.FindChildTraverse("CardName").text = $.Localize(name);
+		panel.FindChildTraverse("CardDesp").text = extra;
+		
         
     }
 
