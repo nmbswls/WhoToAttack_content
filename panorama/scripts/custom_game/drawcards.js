@@ -101,7 +101,7 @@ function OnShowCards(){
 		if (unitData != null) {
 			var cc = unitData['class'];
 			$.Msg('name ' + name + " c " + cc)
-			extra += ' ' + cc;
+			extra += ' ' + $.Localize(cc);
 			
 			var cost = unitData['cost']
 			extra += '/' + cost;
