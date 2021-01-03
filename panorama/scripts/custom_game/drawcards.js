@@ -66,7 +66,10 @@ function OnLockCardRsp(keys){
 }
 
 function OnPickCardRsp(keys){
-    
+    if(!keys.ret)
+	{
+		return;
+	}
     var idx = keys.buy_idx;
     var cardSelectionPanel = $("#CardSelection_Body");
 	var panelID = "card_"+idx;
@@ -167,7 +170,7 @@ function CardPicked(cardIdx){
     GameEvents.SendCustomGameEventToServer("PickCard", {
         card_idx : cardIdx
     });
-    $.Msg("clicked " + cardIdx);
+    
     //$("#CardSelection").SetHasClass("show", false);
     //$("#CardSelection_Body").RemoveClass("draw");
 }
