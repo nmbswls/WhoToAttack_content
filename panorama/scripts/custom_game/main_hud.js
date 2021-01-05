@@ -1,6 +1,6 @@
 (function () {
     //GameEvents.Subscribe( "init_time", InitShowTime );
-    //GameEvents.Subscribe( "show_time", OnShowTime );
+    GameEvents.Subscribe( "show_time", OnShowTime );
     
     GameEvents.Subscribe( "ping_open_doors", OnPingOpenDoors);
     
@@ -95,11 +95,10 @@ function SetTips(keys){
 function OnShowTime(keys){
 	//$.Msg("on shown");
 	if(keys.time_left < 1){
-		$('#left_time').text = $.Localize("roundend");
+		$('#left_time').text = $.Localize("祈祷中");
 	}else{
-		$('#left_time').text = keys.time_left;
+		$('#left_time').text = "stage " + keys.stage + " left " + keys.time_left;
 	}
-	
 	
 }
 
@@ -107,8 +106,8 @@ function OnShowTime(keys){
 function OnPingOpenDoors(keys) {
     
     var loc = [keys.x, keys.y, keys.z];
-    for(var i=0;i<3;i++){
-        $.Schedule(i*0.8, function(){
+    for(var i=0;i<1;i++){
+        $.Schedule(i*1, function(){
             GameUI.PingMinimapAtLocation(loc);
         });
     }
