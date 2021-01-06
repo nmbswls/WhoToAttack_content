@@ -1,0 +1,40 @@
+<root>
+    <styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/encounters.css" />
+    </styles>
+
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/encounters.js" />
+    </scripts>
+	
+    <snippets>
+        <snippet name="Encounter">
+            <Button class="EncounterRect">
+                <Panel id="EncounterBG" hittest="false" >
+                    <Panel id="EncounterTopBar">
+                        <Label id="EncounterName" class="TitleFont" text=""/>
+                    </Panel>
+                    <Image id="EncounterImage" />
+					<Panel id="EncounterBottomBar">
+                        <Label id="EncounterDesp" class="TitleFont" text = "xxx" />
+                    </Panel>
+                </Panel>
+            </Button>
+        </snippet>
+    </snippets>
+	
+	<Panel style="width:100%;height:100%;" hittest="false">
+		
+        <Panel id="EncounterSelection" hittest="false" >
+            <Panel id="EncounterSelection_Body" hittest="false" >
+            </Panel>
+			
+            
+        </Panel>
+		<Button id="EncounterSelection_ShowHide" onactivate="EncounterShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
+			<Label class = "button_title" text="事件显示" />
+		</Button>
+	</Panel>
+	
+</root>

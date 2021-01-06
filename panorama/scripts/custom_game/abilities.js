@@ -1,3 +1,4 @@
+
 function AutoShowAbilityLevel(){
 	var abilities = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("AbilitiesAndStatBranch");
 	if (abilities === null){
@@ -6,7 +7,7 @@ function AutoShowAbilityLevel(){
 	}
 
 	var m_QueryUnit = Players.GetLocalPlayerPortraitUnit();
-	for(var i = 0; i < 10; ++i){
+	for(var i = 0; i < 8; ++i){
 		
 		var abilityIndex = Entities.GetAbility(m_QueryUnit, i);
 		var ability = abilities.FindChildTraverse("Ability" + i);
@@ -121,7 +122,6 @@ function EndRemoveMode(){
 
 (function() {
 	$.Schedule(0.3, AutoShowAbilityLevel)
-    
     GameEvents.Subscribe("player_remove_ability", EnterRemoveMode);
 	GameEvents.Subscribe("player_confirm_ability_remove", EndRemoveMode);
     
