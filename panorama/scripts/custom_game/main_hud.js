@@ -95,9 +95,9 @@ function SetTips(keys){
 function OnShowTime(keys){
 	//$.Msg("on shown");
 	if(keys.time_left < 1){
-		$('#left_time').text = $.Localize("祈祷中");
+		$('#left_time').text = "round " + keys.round + " " + $.Localize("祈祷中");
 	}else{
-		$('#left_time').text = "stage " + keys.stage + " left " + keys.time_left;
+		$('#left_time').text = "round " + keys.round + " stage " + keys.stage + " left " + keys.time_left;
 	}
 	
 }
