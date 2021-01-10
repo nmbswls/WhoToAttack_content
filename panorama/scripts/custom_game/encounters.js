@@ -74,8 +74,15 @@ function OnShowEncounters(){
         
         panel.style['opacity'] = 1;
         
+		var entData = GameUI.EncounterInfo[eid]
+		
 		panel.FindChildTraverse("EncounterName").text = eid;
-		panel.FindChildTraverse("EncounterDesp").text = 'xx ' + eid;
+		
+		if (entData != null) {
+			$.Msg("cnm ent data not none");
+			panel.FindChildTraverse("EncounterName").text = entData['title'];
+			panel.FindChildTraverse("EncounterDesp").text = entData['story_desp'];
+		}
 		
     }
 
