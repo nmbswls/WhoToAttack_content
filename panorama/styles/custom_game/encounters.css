@@ -4,10 +4,10 @@
 	horizontal-align: center;
 	vertical-align: center;
 
-	margin-left: 50px;
-	margin-right: 50px;
-	width: 250px;
-	height: 80px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 350px;
+	height: 145px;
 
 	/* transform: rotateX(5deg); */
 
@@ -89,9 +89,10 @@
 {
 	width: 100%;
 	height: 100%;
-
+background-image:url("file://{resources}/images/custom_game/bg.png");
+background-size: 100%;
 	flow-children: down;
-	background-color: #ffffff;
+
 }
 
 #EncounterTopBar
@@ -108,7 +109,7 @@
 {
 	vertical-align: bottom;
 	horizontal-align: center;
-	width: 100%;
+	width: 50%;
 	height: 50px;
     
     background-color: red;
