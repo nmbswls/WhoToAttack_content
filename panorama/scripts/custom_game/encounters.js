@@ -26,6 +26,7 @@ function OnRefreshEncounters(keys){
         $("#EncounterSelection").SetHasClass("show", false);
         $("#EncounterSelection_Body").RemoveClass("draw");
         NOENCOUNTER = true;
+        $("#EncounterSelection_NoEventHint").style['opacity'] = 1;
         return;
     }
 	ENCOUNTERS_LIST = new Array(3);
@@ -95,7 +96,8 @@ function OnShowEncounters(){
 		}
 		
     }
-
+    $("#EncounterSelection_NoEventHint").style['opacity'] = 0;
+    
     $("#EncounterSelection").SetHasClass("show", true);
     $("#EncounterSelection_Body").AddClass("draw");
 }

@@ -33,11 +33,15 @@
             <Panel id="EncounterSelection_Body" hittest="false" >
             </Panel>
 			
-            
         </Panel>
-		<Button id="EncounterSelection_ShowHide" onactivate="EncounterShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-			<Label class = "button_title" text="事件显示" />
-		</Button>
+        <Panel id="EncounterSelection_Ctrl" hittest="false" >
+            <Label id="EncounterSelection_NoEventHint" class = "button_title" text="无事发生" />
+            <Button id="EncounterSelection_ShowHide" onactivate="EncounterShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
+                <Label class = "button_title" text="事件显示" />
+            </Button>
+        </Panel>
+        
+        
 	</Panel>
 	
 </root>

@@ -62,7 +62,7 @@
 	text-overflow: ellipsis;
 	text-align:left;
 	color: #ffffff;
-	font-size: 30px;
+	font-size: 18px;
 	text-shadow: 2px 2px 2px 2 #000000;
 }
 
@@ -134,17 +134,24 @@ background-size: 100%;
 	flow-children: right;
 }
 
-#EncounterSelection_ShowHide{
+#EncounterSelection_Ctrl{
     margin-top: 100px;
+    margin-top: 72%;
     border-radius: 15px;
-	margin-top: 72%;
     horizontal-align: right;
+    margin-right : 250px;
+	vertical-align: center;
+    flow-children: down;
+}
+
+#EncounterSelection_ShowHide{
+    border-radius: 15px;
+    horizontal-align: center;
 	vertical-align: center;
     width: 100px;
 	height: 50px;
 background-image:url("file://{resources}/images/custom_game/background.png");
 background-size: 100%;
-	margin-right: 300px;
     padding: 5px;
 }
 
