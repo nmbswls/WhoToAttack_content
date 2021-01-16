@@ -2,6 +2,7 @@
     <styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
 		<include src="file://{resources}/styles/custom_game/encounters.css" />
+        <include src="file://{resources}/styles/custom_game/main_hud.css" />
     </styles>
 
     <scripts>

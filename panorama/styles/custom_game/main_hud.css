@@ -274,6 +274,7 @@ Label{
 
 #CardSelection_Left
 {
+    margin-top: -90px;
     margin-left: 180px;
     horizontal-align: left;
 	vertical-align: center;
@@ -382,7 +383,6 @@ Label{
 
 #CardSelection_Lock{
     margin-top: 0px;
-    margin-bottom: 180px;
     border-radius: 15px;
     horizontal-align: left;
 	vertical-align: center;
