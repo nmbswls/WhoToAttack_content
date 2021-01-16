@@ -5,6 +5,7 @@
 })();
 
 ECHOOSEED = false;
+NOENCOUNTER = false;
 ENCOUNTERS_LIST = {}
 SHOW_STATE = false;
 
@@ -17,7 +18,16 @@ function CardLockUnlock(){
 
 function OnRefreshEncounters(keys){
     var elist = keys.encounters;
-    
+    NOENCOUNTER = false;
+    if(!elist){
+        $.Msg("empty empty");
+        SHOW_STATE = false;
+        
+        $("#EncounterSelection").SetHasClass("show", false);
+        $("#EncounterSelection_Body").RemoveClass("draw");
+        NOENCOUNTER = true;
+        return;
+    }
 	ENCOUNTERS_LIST = new Array(3);
     ECHOOSEED = false;
     for(var n in elist){
@@ -80,8 +90,8 @@ function OnShowEncounters(){
 		
 		if (entData != null) {
 			$.Msg("cnm ent data not none");
-			panel.FindChildTraverse("EncounterName").text = entData['title'];
-			panel.FindChildTraverse("EncounterDesp").text = entData['story_desp'];
+			panel.FindChildTraverse("EncounterName").text = $.Localize(entData['title']);
+			panel.FindChildTraverse("EncounterDesp").text = $.Localize(entData['story_desp']);
 		}
 		
     }
@@ -111,6 +121,9 @@ function EncounterShowHide(){
 	if(ECHOOSEED){
 		return;
 	}
+    if(NOENCOUNTER){
+        return;
+    }
     SHOW_STATE = !SHOW_STATE;
     if(SHOW_STATE){
         $("#EncounterSelection").SetHasClass("show", true);

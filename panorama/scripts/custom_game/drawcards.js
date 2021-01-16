@@ -74,7 +74,7 @@ function OnPickCardRsp(keys){
     var cardSelectionPanel = $("#CardSelection_Body");
 	var panelID = "card_"+idx;
 	var panel = cardSelectionPanel.FindChildTraverse(panelID);
-    $.Msg("on pick card rsp " + panelID);
+    //$.Msg("on pick card rsp " + panelID);
 	panel.style['opacity'] = 0;
 	DRAW_CARD_NAMES[idx] = null;
 }
@@ -90,7 +90,7 @@ function OnShowCards(){
     for (var k in names) {
         var name = names[k];
         
-        $.Msg("names: " + name);
+        //$.Msg("names: " + name);
         var panelID = "card_"+k;
         var panel = cardSelectionPanel.FindChildTraverse(panelID);
         if (panel == undefined && panel == null) {
@@ -103,7 +103,7 @@ function OnShowCards(){
 		var extra = ''
 		if (unitData != null) {
 			var cc = unitData['class'];
-			$.Msg('name ' + name + " c " + cc)
+			//$.Msg('name ' + name + " c " + cc)
 			extra += ' ' + $.Localize(cc);
 			
 			var cost = unitData['cost']
