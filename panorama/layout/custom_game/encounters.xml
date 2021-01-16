@@ -16,9 +16,11 @@
                     <Panel id="EncounterTopBar">
                         <Label id="EncounterName" class="TitleFont" text=""/>
                     </Panel>
-                    <Image id="EncounterImage" />
+                    <!-- <Image id="EncounterImage" /> -->
+                    <Label id="EncounterDesp" class="" text=""/>
+                    
 					<Panel id="EncounterBottomBar">
-                        <Label id="EncounterDesp" class="TitleFont" text = "xxx" />
+                        <Label id="EncounterDespEffect" class="TitleFont" text = "effect aaa" />
                     </Panel>
                 </Panel>
             </Button>

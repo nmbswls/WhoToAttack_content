@@ -89,9 +89,9 @@ function OnShowEncounters(){
 		panel.FindChildTraverse("EncounterName").text = eid;
 		
 		if (entData != null) {
-			$.Msg("cnm ent data not none");
 			panel.FindChildTraverse("EncounterName").text = $.Localize(entData['title']);
 			panel.FindChildTraverse("EncounterDesp").text = $.Localize(entData['story_desp']);
+            panel.FindChildTraverse("EncounterDespEffect").text = $.Localize(entData['effect_desp']);
 		}
 		
     }
