@@ -1,0 +1,86 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/payment.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/payment.js" />
+	</scripts>
+	<Panel class="PaymentRoot" onactivate="" >
+
+		<Panel id="InputPage" >
+			<Label class="t1" text="???" />
+			<Panel class="t2" hittest="false">
+				<Panel id="AvalonCoinPanel" onactivate="AvalonCoinInputFocus()">
+					<TextEntry id="AvalonCoin" maxchars="7" ontextentrychange="OnAvalonCoinChange()" />
+				</Panel>
+				<Label class="title" text="??" />
+			</Panel>
+			<!-- 鑷姩澧炲姞 -->
+			<Panel id="AddAvalonCoin" >
+				<Button class="btn" onactivate="AddAvalonCoin(1)">
+					<Label text="+1" />
+				</Button>
+				<Button class="btn" onactivate="AddAvalonCoin(5)">
+					<Label text="+5" />
+				</Button>
+				<Button class="btn" onactivate="AddAvalonCoin(10)">
+					<Label text="+10" />
+				</Button>
+			</Panel>
+			<!-- 鏀粯鎸夐挳 -->
+			<Panel id="PrePayButton" >
+				<Label class="title" html="true" text="... {s:Amount} ?" />
+				<Panel class="line center">
+					<Button class="pay-btn alipay" onactivate="Pay('alipay')">
+						<Image src="file://{resources}/images/custom_game/avalon_store/alipay_png.vtex" />
+						<Label text="???"/>
+					</Button>
+					<Button class="pay-btn wechatpay" onactivate="Pay('wechatpay')">
+						<Image src="file://{resources}/images/custom_game/avalon_store/wechatpay_png.vtex" />
+						<Label text="???" />
+					</Button>
+				</Panel>
+				<Label id="PayTip" class="center margin-sm" html="true" text="" />
+			</Panel>
+		</Panel>
+
+		<Panel id="HtmlPage" onactivate="" >
+			<TextEntry text="" id="url_entry" />
+			<DOTAHTMLPanel id="Html" />
+			
+			<Label id="HtmlPageTip" html="true" text="#qrcode_charge_tooltip" />
+
+			<Panel class="BottomButtons">
+				<Button class="GoBackButton" onactivate="GoBack()">
+					<Label text="#page_back" />
+				</Button>
+				<Button class="GoBackButton" id="manual_charge_button" onactivate="ManualCharge()">
+					<Label text="#page_manual" />
+				</Button>
+			</Panel>
+		</Panel>
+
+		<Panel class="ManualCharge" id="manual_charge" onactivate="">
+            <Panel class="ChargeQRCodes">
+                <Panel class="QRCodeAndCommentTooltip">
+                    <Image id="manual_qrcode_alipay" class="QRCode" src="file://{images}/custom_game/menu/alipay.png" />
+                    <Image class="Alipay CommentImage" src="file://{images}/custom_game/menu/alipay_tooltip.png" />
+                </Panel>
+                <!-- <Panel class="QRCodeAndCommentTooltip">
+                    <Image id="manual_qrcode_wechat" class="QRCode" src="file://{images}/custom_game/menu/wechat.png" />
+                    <Image class="Alipay CommentImage" src="file://{images}/custom_game/menu/wechat_tooltip.png" />
+                </Panel> -->
+            </Panel>
+            <Label text="#manual_charge_tooltip" html="true" id="manual_charge_tooltip" />
+            <Panel class="BottomButtons">
+	            <Button class="GoBackButton" onactivate="ShowManualQRCode()">
+					<Label text="#show_manual_qrcode" />
+				</Button>
+	            <Button class="GoBackButton" onactivate="GoBack()">
+					<Label text="#page_back" />
+				</Button>
+			</Panel>
+        </Panel>
+	</Panel>
+</root>
