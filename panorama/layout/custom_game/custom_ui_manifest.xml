@@ -31,6 +31,7 @@
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/msg_panel.xml" />
         <CustomUIElement type="Hud"	layoutfile="file://{resources}/layout/custom_game/main_hud.xml" />
 		<CustomUIElement type="Hud"	layoutfile="file://{resources}/layout/custom_game/encounters.xml" />
+		<CustomUIElement type="Hud"	layoutfile="file://{resources}/layout/custom_game/shop.xml" />
     
         <!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/abilities.xml" /> -->
 		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/key_binding.xml" />-->
