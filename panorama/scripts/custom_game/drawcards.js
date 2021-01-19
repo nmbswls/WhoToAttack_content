@@ -111,7 +111,7 @@ function OnShowCards(){
 		}
 		
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
-        InitAbilityEvent(abilityPanel, name);
+        InitAbilityEvent(abilityPanel, unitData);
         panel.idx =  k
         
         if(name == null || name == ""){
@@ -142,14 +142,21 @@ function InitCardPanelEvent(panel) {
     
 }
 
-function InitAbilityEvent(abilityPanel, heroName) {
+function InitAbilityEvent(abilityPanel, unitData) {
     // 映射
-   abilityPanel.SetPanelEvent("onmouseover", function() {
-        $.DispatchEvent("DOTAShowAbilityTooltip", abilityPanel, "lone_druid_spirit_bear_entangle");
-   });
-   abilityPanel.SetPanelEvent("onmouseout", function() {
+	if(!unitData){
+		return;
+	}
+	var abilityName = unitData[despSkill];
+	if(!abilityName){
+		return;
+	}
+	abilityPanel.SetPanelEvent("onmouseover", function() {
+		$.DispatchEvent("DOTAShowAbilityTooltip", abilityPanel, abilityName);
+	});
+	abilityPanel.SetPanelEvent("onmouseout", function() {
         $.DispatchEvent("DOTAHideAbilityTooltip");
-   })    
+	})    
 }
 
 function CloseCardSelection() {

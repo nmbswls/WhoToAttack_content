@@ -63,14 +63,8 @@ function OnConfirmPurchase() {
     GameEvents.SendCustomGameEventToServer('bom_player_purchase', {
         ItemName: psz_PurchaseItemName,
     })
-	OnPurchaseMessageArrived(null);
 }
 
-function OnPurchaseMessageArrived(args) {
-    QueryShopRelatedDataFromServer();
-    // GameEvents.SendCustomGameEventToServer("bom_player_equip",{})
-    HideConfirmPurchasePanel();
-}
 
 
 function HideConfirmPurchasePanel() {
@@ -147,16 +141,22 @@ function RebuildShopTags() {
 }
 
 function QueryShopItemsFromServer() {
-    GameEvents.SendCustomGameEventToServer('bom_player_ask_shop_items', {})
+    GameEvents.SendCustomGameEventToServer('player_query_shop_items_req', {})
+}
+
+function OnPlayerPurchaseRsp() {
+	QueryShopRelatedDataFromServer();
+	//GameEvents.SendCustomGameEventToServer("bom_player_equip",{})
+	HideConfirmPurchasePanel();
 }
 
 function OnShopItemsArrived() {
 	
     var data = CustomNetTables.GetTableValue('econ_data', 'shop_items');
-    // if (data == null) {
-		// QueryShopItemsFromServer();
-		// return;
-	// }
+    if (data == null) {
+		QueryShopItemsFromServer();
+		return;
+	}
 	data = {1:{"name":"t10","image":"",cost:2},2:{"name":"t13","image":"",cost:2},3:{"name":"t15","image":"",cost:2}}
     $.Msg("hello");
 	BuildShopItems(data);
@@ -225,6 +225,8 @@ function OnPaymentComplete(kv) {
     //CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);
     CustomNetTables.SubscribeNetTableListener('econ_data', OnShopItemsArrived);
     //CustomNetTables.SubscribeNetTableListener('econ_data', OnPointHistoryArrived);
-
+	
+	GameEvents.Subscribe('player_purchase_rsp', OnPlayerPurchaseRsp);
+	
     GameUI.OpenPayment = OpenPayment;
 })();
