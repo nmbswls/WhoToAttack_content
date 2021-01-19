@@ -21,7 +21,7 @@
                     <Panel id="CardBottomBar">
                         <Label id="CardDesp" class="TitleFont" text = "恶魔/1*" />
                         <!-- <Label class="TitleFont" text = "cnmcnm" /> -->
-                        <Image id="CardPrice" src="s2r://panorama/images/logos/dota_logo_bright_psd.vtex"/>
+                        <Image id="CardPrice" src="file://{resources}/images/custom_game/Regeneration_Rune_minimap_icon.png"/>
                     </Panel>
                     
                     

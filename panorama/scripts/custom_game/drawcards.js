@@ -144,6 +144,7 @@ function InitCardPanelEvent(panel) {
 
 function InitAbilityEvent(abilityPanel, unitData) {
     // 映射
+
 	if(!unitData){
 		return;
 	}
@@ -154,8 +155,8 @@ function InitAbilityEvent(abilityPanel, unitData) {
 	abilityPanel.SetPanelEvent("onmouseover", function() {
 		$.DispatchEvent("DOTAShowAbilityTooltip", abilityPanel, abilityName);
 	});
-	abilityPanel.SetPanelEvent("onmouseout", function() {
-        $.DispatchEvent("DOTAHideAbilityTooltip");
+   abilityPanel.SetPanelEvent("onmouseout", function() {
+		$.DispatchEvent("DOTAHideAbilityTooltip");
 	})    
 }
 

@@ -230,12 +230,12 @@ Label{
 #CardName
 {
 	vertical-align: center;
-	horizontal-align: left;
-	margin-right: 50px;
-	margin-left: 77px;
+	horizontal-align: center;
+	margin-right: 10px;
+	margin-left: 10px;
 	text-overflow: shrink;
 	color: #ffffff;
-	font-size: 36px;
+	font-size: 30px;
 	text-shadow: 2px 2px 2px 2 #000000;
 }
 
@@ -308,7 +308,6 @@ Label{
 	height: 350px;
 
 	flow-children: down;
-	background-color: #000000;
 }
 
 #CardTopBar
@@ -317,7 +316,7 @@ Label{
 	horizontal-align: center;
 	width: 100%;
 	height: 70px;
-
+        background-image:url("file://{resources}/images/custom_game/bgtop.png");
 	/* background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex"); */
 	background-size: 100%;
 }
@@ -328,9 +327,8 @@ Label{
 	horizontal-align: center;
 	width: 100%;
 	height: 80px;
-    
-    background-color: blue;
-	/* background-image: url("s2r://panorama/images/logos/dota_logo_bright_psd.vtex"); */
+        background-image:url("file://{resources}/images/custom_game/bgbtm.png");    
+
 	background-position: 50%;
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -347,8 +345,8 @@ Label{
 
 	background-color: #ffffffff;
 
-	background-image: url("s2r://panorama/images/logos/dota_logo_bright_psd.vtex");
-	background-size: 40px 40px;
+        background-image:url("file://{resources}/images/custom_game/ursa.png");
+	background-size: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
 }
