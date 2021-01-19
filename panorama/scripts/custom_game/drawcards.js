@@ -145,7 +145,7 @@ function InitCardPanelEvent(panel) {
 function InitAbilityEvent(abilityPanel, heroName) {
     // 映射
    abilityPanel.SetPanelEvent("onmouseover", function() {
-        $.DispatchEvent("DOTAShowAbilityTooltip", abilityPanel, "lone_druid_spirit_bear_entangle");
+        $.DispatchEvent("DOTAShowAbilityTooltip", abilityPanel, "ursa_des");
    });
    abilityPanel.SetPanelEvent("onmouseout", function() {
         $.DispatchEvent("DOTAHideAbilityTooltip");
