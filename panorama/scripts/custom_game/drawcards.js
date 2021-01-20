@@ -148,7 +148,7 @@ function InitAbilityEvent(abilityPanel, unitData) {
 	if(!unitData){
 		return;
 	}
-	var abilityName = unitData[despSkill];
+	var abilityName = unitData['despSkill'];
 	if(!abilityName){
 		return;
 	}
