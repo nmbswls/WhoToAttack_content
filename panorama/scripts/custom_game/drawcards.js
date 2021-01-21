@@ -6,12 +6,12 @@
 })();
 
 var ClassColorMap = {
-    "evil": '#bbbbbb',
-    "nature": '#bbbbff',
-    "brawn": '#6666ff',
-    "a": '#ff00ff',
-    "b": '#ff8800',
-    "c": '#ade55c',
+    "class_evil": '#bbbbbb',
+    "class_wizard": '#bbbbff',
+    "class_nature": '#6666ff',
+    "class_hidden": '#ff00ff',
+    "class_brawn": '#ff8800',
+    "class_vibrant": '#ade55c',
 };
 
 Game.AddCommand( "+ShowHideCards", CardShowHide, "",0);
