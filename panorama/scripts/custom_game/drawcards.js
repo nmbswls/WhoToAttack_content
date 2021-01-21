@@ -119,7 +119,7 @@ function OnShowCards(){
             continue;
         }
         panel.style['opacity'] = 1;
-        panel.FindChildTraverse("CardImage").SetImage("file://{resources}/images/custom_game/brawn_tusk.png");
+        panel.FindChildTraverse("CardImage").SetImage("file://{images}/images/custom_game/img_"+ name +".png");
         //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
         panel.FindChildTraverse("CardName").text = $.Localize(name);
 		panel.FindChildTraverse("CardDesp").text = extra;
