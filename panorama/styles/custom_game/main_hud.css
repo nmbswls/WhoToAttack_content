@@ -341,8 +341,7 @@ Label{
 	width: 100%;
 	height: 200px;
 
-	horizontal-align: center;
-        background-image:url("file://{resources}/images/custom_game/img_vibrant_warlock.png"); 
+	horizontal-align: center; 
 
 
 	background-size: 100%;
