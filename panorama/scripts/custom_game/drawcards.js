@@ -112,14 +112,13 @@ function OnShowCards(){
 		
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
         InitAbilityEvent(abilityPanel, unitData);
-        panel.idx =  k
-        
+        panel.idx =  k       
         if(name == null || name == ""){
-            panel.style['opacity'] = 0;
+            panel.style['opacity'] = 0; 
             continue;
         }
         panel.style['opacity'] = 1;
-        panel.FindChildTraverse("CardImage").SetImage("file://{images}/images/custom_game/img_"+ name +".png");
+        panel.FindChildTraverse("CardImage").SetImage("file://{images}/custom_game/img_"+name+".png");
         //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
         panel.FindChildTraverse("CardName").text = $.Localize(name);
 		panel.FindChildTraverse("CardDesp").text = extra;
