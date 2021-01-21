@@ -3,9 +3,16 @@
     GameEvents.Subscribe( "show_cards", OnRefreshCard);
     GameEvents.Subscribe( "pick_cards_rsp", OnPickCardRsp);
     GameEvents.Subscribe( "lock_cards_rsp", OnLockCardRsp);
-    
-    
 })();
+
+var ClassColorMap = {
+    "evil": '#bbbbbb',
+    "nature": '#bbbbff',
+    "brawn": '#6666ff',
+    "a": '#ff00ff',
+    "b": '#ff8800',
+    "c": '#ade55c',
+};
 
 Game.AddCommand( "+ShowHideCards", CardShowHide, "",0);
 DRAW_CARD_NAMES = {}
@@ -99,7 +106,7 @@ function OnShowCards(){
             InitCardPanelEvent(panel);
         }
         var unitData = GameUI.UnitInfoConfig[name]
-		
+		var classColor = "white";
 		var extra = ''
 		if (unitData != null) {
 			var cc = unitData['class'];
@@ -108,6 +115,9 @@ function OnShowCards(){
 			
 			var cost = unitData['cost']
 			extra += '/' + cost;
+			
+			classColor = ClassColorMap[cc] or classColor;
+			
 		}
 		
         var abilityPanel = panel.FindChildTraverse("CardBottomBar");
@@ -123,6 +133,7 @@ function OnShowCards(){
         //panel.FindChildTraverse("CardSkill").SetImage("file://{images}/custom_game/card/"+name+".png");
         panel.FindChildTraverse("CardName").text = $.Localize(name);
 		panel.FindChildTraverse("CardDesp").text = extra;
+	    panel.FindChildTraverse("CardDesp").style.color = classColor;
 		
         
     }
