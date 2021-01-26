@@ -22,8 +22,6 @@ function OnMsgBottom(args) {
 			$("#bottom_msg_panel").style.transform = 'scale3d(1, 1, 1)'
 	})
     
-    $.Msg("dur " + duration);
-
 	$.Schedule(duration, function() {
 		if (m_MsgSeqId == seqId)
 			$("#bottom_msg_panel").style.opacity = 0;

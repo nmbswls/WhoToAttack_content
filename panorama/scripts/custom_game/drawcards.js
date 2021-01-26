@@ -53,8 +53,6 @@ function CardLockUnlock(){
 function OnRefreshCard(keys){
     var cardList = keys.hand_cards;
     
-    $.Msg("cnmcnmcnmcnm OnRefreshCard " + keys.hand_cards[0]);
-    
 	//var cards = keys.cards.split(',');
 	DRAW_CARD_NAMES = new Array(5);
     

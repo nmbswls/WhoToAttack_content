@@ -20,7 +20,6 @@ function OnRefreshEncounters(keys){
     var elist = keys.encounters;
     NOENCOUNTER = false;
     if(!elist){
-        $.Msg("empty empty");
         SHOW_STATE = false;
         
         $("#EncounterSelection").SetHasClass("show", false);
@@ -60,7 +59,6 @@ function OnShowEncounters(){
     for (var k in eids) {
         var eid = eids[k];
         
-        $.Msg("one eid: " + eid);
         var panelID = "encounter_" + k;
         var panel = selectionPanel.FindChildTraverse(panelID);
         if (panel == undefined && panel == null) {

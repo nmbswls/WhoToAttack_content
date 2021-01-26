@@ -15,8 +15,12 @@
                 <Panel class="ShopItemImagePanel" id="shop_item_image_panel">
                     <Image id="shop_item_image" class="ShopItemImage" />
                     <Panel class="PreviewButton" id="preview_button">
-                        <Image src="file://{resources}/images/custom_game/econ/preview_png.vtex" />
+                        <Image src="file://{resources}/images/custom_game/cross.png" />
                     </Panel>
+					<Panel class="EquipButton" id="equip_button">
+                        <Image src="file://{resources}/images/custom_game/img_evil.png" />
+                    </Panel>
+					
                 </Panel>
                 <Panel class="PurchaseButton" id="purchase_button">
                     <Label id="purchase_cost_text" text="#purchase_cost" html="true" />

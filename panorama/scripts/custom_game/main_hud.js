@@ -31,7 +31,7 @@ find_dota_hud_element('ToggleMinimalShop').style['opacity'] = '0';
 
 
 function OnBackHome(){
-    $.Msg("cnmcnmcnm OnBackHome");
+    //$.Msg("cnmcnmcnm OnBackHome");
 }
 
 function PlayerInfoTableChanged(table,key, data){
@@ -42,7 +42,6 @@ function PlayerInfoTableChanged(table,key, data){
             // var is_muted = Game.IsPlayerMuted( info.player_id );
             // var is_local_player = Players.GetLocalPlayer() == info.player_id ? true : false;
             
-            $.Msg("changed " + info.money);
 
             // 渲染玩家详情面板
             // $('#player_name_'+player_id).steamid = info.steam_id;

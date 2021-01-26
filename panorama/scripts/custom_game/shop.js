@@ -1,8 +1,9 @@
 var nRefreshCountDown = 0;
+var m_PointsLeft = 5;
 var m_ShopItemPanels = {}; 
 var m_ShopItemFromSerever_IndexByName = [];
 
-var m_PlayerCollectionData = {"aa":2,"bb":3}
+var m_PlayerCollectionData = {"t10":2,"t13":3}
 
 function OpenShop(){
     $("#page_shop").ToggleClass("Hidden");
@@ -42,6 +43,7 @@ function UpdateShopItems() {
     for (var i = 0; i < childCount; i++) {
         var child = parent.GetChild(i)
         var cost = child.cost;
+		$.Msg("cost " + child.cost + " " + points)
         if (cost > points) {
             child.enabled = false;
             child.AddClass("NotEnoughPoints");
@@ -134,7 +136,9 @@ function RebuildShopTags() {
         return;
     }
     for (var name in m_PlayerCollectionData) {
+		
         if (name != "steamid" && m_ShopItemPanels[name] != null) {
+			$.Msg("collection data " + name);
             m_ShopItemPanels[name].AddClass("Owned");
         }
     }
@@ -157,9 +161,15 @@ function OnShopItemsArrived() {
 		QueryShopItemsFromServer();
 		return;
 	}
-	data = {1:{"name":"t10","image":"",cost:2},2:{"name":"t13","image":"",cost:2},3:{"name":"t15","image":"",cost:2}}
-    $.Msg("hello");
 	BuildShopItems(data);
+	UpdateShopItems();
+}
+
+function OnPointHistoryArrived() {
+    var pointHistory = CustomNetTables.GetTableValue('econ_data', 'point_history_' + Players.GetLocalPlayer());
+    if (pointHistory == null) return;
+
+    //BuildPointsHistory(pointHistory);
 }
 
 function OnCollectionDataArrived() {
@@ -224,7 +234,7 @@ function OnPaymentComplete(kv) {
     QueryShopRelatedDataFromServer();
     //CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);
     CustomNetTables.SubscribeNetTableListener('econ_data', OnShopItemsArrived);
-    //CustomNetTables.SubscribeNetTableListener('econ_data', OnPointHistoryArrived);
+    CustomNetTables.SubscribeNetTableListener('econ_data', OnPointHistoryArrived);
 	
 	GameEvents.Subscribe('player_purchase_rsp', OnPlayerPurchaseRsp);
 	
