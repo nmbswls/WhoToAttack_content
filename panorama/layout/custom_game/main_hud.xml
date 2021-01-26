@@ -62,7 +62,7 @@
                     <Panel id="CardBottomBar">
                         <Label id="CardDesp" class="TitleFont" text = "恶魔/1*" />
                         <!-- <Label class="TitleFont" text = "cnmcnm" /> -->
-                        <Image id="CardPrice" src="file://{resources}/images/custom_game/Regeneration_Rune_minimap_icon.png"/>
+                        <Image id="CardPrice" src="file://{resources}/images/custom_game/question.png"/>
                     </Panel>
                     
                     

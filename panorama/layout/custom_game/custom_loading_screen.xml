@@ -1,0 +1,10 @@
+<root>
+	<styles>
+
+	</styles>
+	<Panel>
+
+		<Image src="file://{images}/custom_game/mini_heroes_loadingscreen.png"/>
+	
+	</Panel>
+</root>

@@ -8,12 +8,12 @@
 })();
 
 var ClassColorMap = {
-    "class_evil": '#bbbbbb',
-    "class_wizard": '#bbbbff',
-    "class_nature": '#6666ff',
-    "class_hidden": '#ff00ff',
-    "class_brawn": '#ff8800',
-    "class_vibrant": '#ade55c',
+    "class_evil": '#80330d',
+    "class_wizard": '#5bc0de',
+    "class_nature": '#5cb85c',
+    "class_hidden": '#5b0d80',
+    "class_brawn": '#f0ad4e',
+    "class_vibrant": '#d9534f',
 };
 
 
