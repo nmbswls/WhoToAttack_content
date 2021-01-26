@@ -17,47 +17,47 @@
                         <Label id="CardName" class="TitleFont" text=""/>
                     </Panel>
                     <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_siege.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_axe.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_centaur.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_ogre.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_tidehunter.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_tusk.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_abaddon.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_clinkz.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_dazzle.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_sf.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_skeleton.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_underlord.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_drow.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_ls.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_pa.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_riki.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_ta.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_willow.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_bear.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_enchantress.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_treant.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_ursa.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_viper.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_wolf.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_alchemist.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_dk.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_earthshaker.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_huskar.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_techies.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_warlock.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_furion.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_jakiro.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_leshrac.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_lich.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_lion.png"/>
-<Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_zeus.png"/>
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_axe.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_centaur.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_ogre.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_tidehunter.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_brawn_tusk.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_abaddon.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_clinkz.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_dazzle.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_sf.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_skeleton.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_evil_underlord.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_drow.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_ls.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_pa.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_riki.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_ta.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_hidden_willow.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_bear.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_enchantress.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_treant.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_ursa.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_viper.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_nature_wolf.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_alchemist.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_dk.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_earthshaker.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_huskar.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_techies.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_vibrant_warlock.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_furion.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_jakiro.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_leshrac.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_lich.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_lion.png"/> -->
+<!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_zeus.png"/> -->
                     
                     <Panel id="CardBottomBar">
                         <Label id="CardDesp" class="TitleFont" text = "恶魔/1*" />
@@ -131,7 +131,7 @@
 				<!-- </Panel> -->
 				<Panel class = "board_line_content">
 					<Panel class = "align-container">
-						<Label id = "game_status" text = "#timeleft" class = "text_xl text_green"></Label>
+						<Label id = "round_info" text = "#timeleft" class = "text_xl text_green"></Label>
 					</Panel>
 				</Panel>
 				<Panel class = "board_line_content">
@@ -142,7 +142,6 @@
                 <Panel class = "board_line_content">
 					<Panel class = "align-container">
 						<Label id = "hand_cards" text = "#cards"></Label>
-						
 					</Panel>
 				</Panel>
 				

@@ -3,7 +3,7 @@ var m_PointsLeft = 5;
 var m_ShopItemPanels = {}; 
 var m_ShopItemFromSerever_IndexByName = [];
 
-var m_PlayerCollectionData = {"t10":2,"t13":3}
+var m_PlayerCollectionData = {}
 
 function OpenShop(){
     $("#page_shop").ToggleClass("Hidden");
@@ -43,7 +43,6 @@ function UpdateShopItems() {
     for (var i = 0; i < childCount; i++) {
         var child = parent.GetChild(i)
         var cost = child.cost;
-		$.Msg("cost " + child.cost + " " + points)
         if (cost > points) {
             child.enabled = false;
             child.AddClass("NotEnoughPoints");
@@ -154,33 +153,66 @@ function OnPlayerPurchaseRsp() {
 	HideConfirmPurchasePanel();
 }
 
-function OnShopItemsArrived() {
-	
+function BuildPointsInfo(data) {
+	m_PointsLeft = data.amount;
+	$("#my_point_value").text = Math.floor(m_PointsLeft);
+	UpdateShopItems();
+}
+
+function OnShopItemsArrived(table_name, key, data) {
+	if(key != 'shop_items')
+	{
+		return;
+	}
+	$.Msg( "Table ", table_name, " changed: '", key, "' = ", data );
     var data = CustomNetTables.GetTableValue('econ_data', 'shop_items');
     if (data == null) {
-		QueryShopItemsFromServer();
 		return;
 	}
 	BuildShopItems(data);
 	UpdateShopItems();
 }
 
-function OnPointHistoryArrived() {
-    var pointHistory = CustomNetTables.GetTableValue('econ_data', 'point_history_' + Players.GetLocalPlayer());
-    if (pointHistory == null) return;
-
-    //BuildPointsHistory(pointHistory);
+function OnPointHistoryArrived(table_name, key, data) {
+	
+	if(key != 'coin_data_' + Players.GetLocalPlayer())
+	{
+		return;
+	}
+	$.Msg( "Table ", table_name, " changed: '", key, "' = ", data );
+    var data = CustomNetTables.GetTableValue('econ_data', 'coin_data_' + Players.GetLocalPlayer());
+    if (data == null) return;
+	
+    BuildPointsInfo(data);
 }
 
-function OnCollectionDataArrived() {
-    // var data = CustomNetTables.GetTableValue('econ_data', 'collection_data_' + Players.GetLocalPlayer());
-    // if (data == null) return;
-    // RebuildCollections(data);
-    // RebuildShopTags(data);
+function RebuildCollections(data){
+	m_PlayerCollectionData = data;
+}
+
+
+function OnCollectionDataArrived(table_name, key, data) {
+	
+	if(key != 'collection_data_' + Players.GetLocalPlayer())
+	{
+		return;
+	}
+	
+	$.Msg( "Table ", table_name, " changed: '", key, "' = ", data );
+    var data = CustomNetTables.GetTableValue('econ_data', 'collection_data_' + Players.GetLocalPlayer());
+    if (data == null) return;
+	
+    RebuildCollections(data);
+    RebuildShopTags();
+}
+
+function QueryCollectionDataFromServer() {
+    GameEvents.SendCustomGameEventToServer('player_query_econ_data_req', {})
 }
 
 function QueryShopRelatedDataFromServer(){
     QueryShopItemsFromServer();
+	QueryCollectionDataFromServer();
     $("#refresh_button").enabled = false;
     nRefreshCountDown = 60; //60s 保护
     RefreshingRefreshCountDown()
@@ -221,9 +253,6 @@ function OnPaymentComplete(kv) {
 }
 
 (function(){
-    //OnCollectionDataArrived();
-    OnShopItemsArrived();
-    //OnPointHistoryArrived();
 
     var PaymentPanel = $("#payment_panel");
     PaymentPanel.BLoadLayout("file://{resources}/layout/custom_game/payment.xml", false, false);
@@ -232,7 +261,7 @@ function OnPaymentComplete(kv) {
     GameEvents.Subscribe("avalon_payment_complete", OnPaymentComplete);
 
     QueryShopRelatedDataFromServer();
-    //CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);
+    CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);
     CustomNetTables.SubscribeNetTableListener('econ_data', OnShopItemsArrived);
     CustomNetTables.SubscribeNetTableListener('econ_data', OnPointHistoryArrived);
 	
