@@ -11,8 +11,20 @@
 	</scripts>
     
     <script>
-    
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
+        GameUI.CustomUIConfig().team_logo_xml = "file://                        {resources}/layout/custom_game/wta_team_icon.xml";
+		GameUI.CustomUIConfig().team_logo_large_xml = "file://                        {resources}/layout/custom_game/wta_team_icon_large.xml";
+                
+                GameUI.CustomUIConfig().team_colors = {}		
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#FF0000;"; // { 255, 0, 0 }	--		red
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_2] = "#FFC909;"; // { 243, 201, 9 }		--		yellow
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_3] = "#C54DA8;"; // { 197, 77, 168 }		--		pink
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_4] = "#FF6C00;"; // { 255, 108, 0 }	--		orange
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_5] = "#3455FF;"; // { 52, 85, 255 }		--		blue
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_6] = "#65D413;"; // { 101, 212, 19}	--		green
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_7] = "#815336;"; // { 129, 83, 54 }	--		brown
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_8] = "#8c2af4;"; // { 140, 42, 244 }	--		Purple
+       
+             GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
 		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );
 		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false );
         
