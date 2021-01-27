@@ -2,11 +2,13 @@
     <styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
 		<include src="file://{resources}/styles/custom_game/main_hud.css" />
+		<include src="file://{resources}/styles/custom_game/guide.css" />
     </styles>
 
     <scripts>
         <include src="file://{resources}/scripts/custom_game/main_hud.js" />
         <include src="file://{resources}/scripts/custom_game/drawcards.js" />
+		<include src="file://{resources}/scripts/custom_game/guide.js" />
     </scripts>
 	
     <snippets>
@@ -77,6 +79,7 @@
     
     
 	<Panel style="width:100%;height:100%;" hittest="false">
+		
 		
         <Panel id="CardSelection" hittest="false" >
             <Panel id="CardSelection_Body" hittest="false" >
@@ -159,13 +162,7 @@
 		</Panel>
 		
 		
-		<Panel id = "iconlist" class="">
-            <Panel class = "iconone" id = "icon-guide" onactivate = "open_panel_guide();">
-            </Panel>
-			<!-- <Panel class = "iconone" id = "icon-my" onactivate = "open_panel_shop();" onmouseover="tips_over_guide('tips_icon-my','icon-my')" onmouseout="tips_out()"> -->
-            <!-- </Panel> -->
-
-        </Panel>
+		
 		
 		<Panel id = "board_left" class="">
 			<Panel id="tip_hider" class="tips tip_hidden">
@@ -192,10 +189,16 @@
             <!-- </Panel> -->
 		</Panel>
 		
+		<Panel id = "iconlist" class="">
+            <Panel class = "iconone" id = "icon-guide" onactivate = "open_panel_guide();">
+            </Panel>
+			<!-- <Panel class = "iconone" id = "icon-my" onactivate = "open_panel_shop();" onmouseover="tips_over_guide('tips_icon-my','icon-my')" onmouseout="tips_out()"> -->
+            <!-- </Panel> -->
+        </Panel>
 		
 		<Panel id = "panel_guide" hittest = "true">
             <Panel class="store_title">
-                <Label class="text_panel_title" text="可变列表" />
+                <Label class="text_panel_title" text="教程" />
             </Panel>
 
             <Image style="width:900px;height:600px;margin-left:30px;margin-top:100px;" src="file://{images}/custom_game/info.png"/>

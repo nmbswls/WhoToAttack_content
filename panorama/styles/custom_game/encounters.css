@@ -41,7 +41,7 @@
 #EncounterDesp{
     vertical-align: center;
     horizontal-align: center;
-    z-index:600;
+    z-index:5;
     margin-right: 20px;
 	margin-left: 20px;
     
@@ -142,6 +142,7 @@ background-size: 100%;
     margin-right : 250px;
 	vertical-align: center;
     flow-children: down;
+	z-index:5;
 }
 
 #EncounterSelection_ShowHide{

@@ -1,5 +1,33 @@
+#iconlist{
+	height:50px;
+	width:350px;
+	horizontal-align:left;
+	vertical-align:top;
+	margin-left:105px;
+	margin-top:12px;
+	flow-children:right;
 
+	transition-property:position;
+    transition-duration:0.5s;
 
+    position:0px 0px 0px;
+}
+.iconone{
+	opacity:0.5;
+	height:33px;
+	width:33px;
+	margin-right:17px;
+	background-repeat:no-repeat;
+	background-size:33px 33px;
+	background-position:center center;
+}
+.iconone:hover{
+	opacity:1;
+}
+
+#icon-guide{
+	background-image: url('file://{images}/custom_game/question.png');
+}
 
 Label{
 	font-size:20px;
@@ -263,7 +291,7 @@ Label{
 
 	opacity: 0;
 
-	z-index: 1;
+	z-index: 100;
 }
 
 

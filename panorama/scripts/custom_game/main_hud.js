@@ -5,6 +5,7 @@
     GameEvents.Subscribe( "ping_open_doors", OnPingOpenDoors);
     
     CustomNetTables.SubscribeNetTableListener( "player_info_table", PlayerInfoTableChanged );
+	
 })();
 
 function find_dota_hud_element(id){
@@ -112,6 +113,5 @@ function OnPingOpenDoors(keys) {
         });
     }
 }
-
 
 
