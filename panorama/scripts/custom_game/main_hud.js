@@ -94,12 +94,13 @@ function SetTips(keys){
 function OnShowTime(keys){
 	//$.Msg("on shown");
 	if(keys.time_left < 1){
-		$('#left_time').text = $.Localize("祈祷中");
+		$('#left_time').text = $.Localize('bless_time');
 	}else{
 		
-		$('#left_time').text = "stage " + keys.stage + " left " + keys.time_left;
+		$('#left_time').text = $.Localize('stage_cnt') + keys.stage;
+                $('#hand_cards').text = $.Localize('left_cnt') + keys.time_left;
 	}
-	$('#round_info').text = "round " + keys.round;
+	$('#round_info').text = $.Localize('round_cnt') + keys.round;
 }
 
 

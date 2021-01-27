@@ -131,17 +131,17 @@
 				<!-- </Panel> -->
 				<Panel class = "board_line_content">
 					<Panel class = "align-container">
-						<Label id = "round_info" text = "#timeleft" class = "text_xl text_green"></Label>
+						<Label id = "round_info" text = "" class = "text_xl text_green"></Label>
 					</Panel>
 				</Panel>
 				<Panel class = "board_line_content">
 					<Panel class = "align-container">
-						<Label id = "left_time" text = "#timeprepare"></Label>
+						<Label id = "left_time" text = ""></Label>
 					</Panel>
 				</Panel>
                 <Panel class = "board_line_content">
 					<Panel class = "align-container">
-						<Label id = "hand_cards" text = "#cards"></Label>
+						<Label id = "hand_cards" text = ""></Label>
 					</Panel>
 				</Panel>
 				
