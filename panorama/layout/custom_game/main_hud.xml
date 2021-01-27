@@ -84,9 +84,9 @@
         <Panel id="CardSelection" hittest="false" >
             <Panel id="CardSelection_Body" hittest="false" >
             </Panel>
-            <Button id="CardSelection_CloseButton" onactivate="CloseCardSelection()" onmouseover="DOTAShowTextTooltip('#CardSelection_Close_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label text="关闭" />
-            </Button>
+            <!-- <Button id="CardSelection_CloseButton" onactivate="CloseCardSelection()" onmouseover="DOTAShowTextTooltip('#CardSelection_Close_Description')" onmouseout="DOTAHideTextTooltip()" > -->
+                <!-- <Label text="关闭" /> -->
+            <!-- </Button> -->
 		
             <Panel id="CardSelection_Left">
                 <Button id="CardSelection_Lock" onactivate="CardLockUnlock()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
