@@ -1,0 +1,32 @@
+#panel_guide{
+	width:1690px;
+	height:1020px;
+	/* background-color:red; */
+	background-image: url("file://{images}/backgrounds/gallery_background_png.vtex");
+    background-size:100% 100%;
+    box-shadow: fill #00000066 -4px -4px 8px 8px;
+    vertical-align: center;
+    horizontal-align:center;
+    z-index:5005;
+    transition-property: opacity, transform, pre-transform-scale2d, wash-color, position;
+    transition-duration: 0.4s;
+    transition-delay: 0s;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
+}
+
+.store_title{
+	background-image: url("file://{images}/dota_plus/plus_wall_header_png.vtex");
+	/*background-image: url("file://{images}/backgrounds/embers_bg_1.png");*/
+	/*background-image: url("file://{images}/backgrounds/sidelane.jpg");*/
+	background-size: 100% 200%;
+	height:100px;
+	width:100%;
+	box-shadow: fill #00000066 -4px -4px 8px 8px;
+	/*opacity-mask:url("s2r://panorama/images/masks/softedge_vertical_softer_png.vtex");*/
+}
+
+
+.dac_shade{
+	box-shadow: fill #00000066 -4px -4px 8px 8px;
+}
