@@ -191,7 +191,7 @@ Label{
 #panel_guide{
 	width:1690px;
 	height:1020px;
-	/* background-image: url("file://{images}/backgrounds/gallery_background_png.vtex"); */
+	background-image: url("file://{images}/custom_game/guide.png"); 
     background-size:100% 100%;
     box-shadow: fill #00000066 -4px -4px 8px 8px;
     vertical-align: center;

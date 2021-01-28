@@ -2,13 +2,13 @@
     <styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
 		<include src="file://{resources}/styles/custom_game/main_hud.css" />
-		<include src="file://{resources}/styles/custom_game/guide.css" />
+		
     </styles>
 
     <scripts>
         <include src="file://{resources}/scripts/custom_game/main_hud.js" />
         <include src="file://{resources}/scripts/custom_game/drawcards.js" />
-		<include src="file://{resources}/scripts/custom_game/guide.js" />
+	        <include src="file://{resources}/scripts/custom_game/guide.js" />	
     </scripts>
 	
     <snippets>
