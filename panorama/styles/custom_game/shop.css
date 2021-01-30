@@ -1,3 +1,10 @@
+.button_title{
+	color:#efefef;
+	font-size:18px;
+	horizontal-align:center;
+	vertical-align:center;
+}
+
 .MenuItems {
     flow-children: down;
     horizontal-align: right;
@@ -24,6 +31,7 @@
     /* transition-property: transform, opacity; */
     /* transition-duration: 0.3s; */
     /* transition-timing-function: ease-in-out; */
+    z-index:4000;
 }
 
 .MenuPage.Shop.Hidden {
@@ -156,17 +164,27 @@
 .NotEnoughPoints .PurchaseButton {
     background-color:gradient( linear, 0% 0%, 0% 100%, from( #30261d ), to( #1d1f0c ) );
 }
-
+.PurchaseButton:hover{
+    brightness:4;
+}
 .Owned .PurchaseButton {
     background-color:gradient( linear, 0% 0%, 0% 100%, from( #30261d ), to( #1d1f0c ) );
 }
 
-.PurchaseButton:hover{
-    brightness:4;
-}
+
 
 .NotEnoughPoints .PurchaseButton:hover {
-    
+    brightness:1;
+}
+.Owned .PurchaseButton:hover {
+    brightness:1;
+}
+
+.ShopButton {
+    border-radius: 5px;
+    width: 60px;
+    height: 30px;
+    background-color: #3c3c3c;
 }
 
 #purchase_cost_text {
@@ -191,12 +209,13 @@
     padding: 50px;
     width: 600px;
     height: 400px;
-    background-color: #000000ee;
+    background-color: #000000ff;
     border: 1px solid #3b6cd0;
 
     /* transition-property: transform, opacity, pre-transform-scale2d; */
     /* transition-duration: 0.3s; */
     /* transition-timing-function: ease-in-out; */
+    opacity: 1;
 }
 
 #confirm_purchase {
@@ -204,6 +223,7 @@
     color: white;
     margin-top: 20px;
 }
+
 
 .ConfirmPurchaseButtons {
     flow-children: right;
@@ -233,13 +253,30 @@
 }
 
 .OwnedOverlay {
-    background-image:url("file://{images}/custom_game/question.png");
+    background-image:url("file://{images}/custom_game/gou.png");
     width: 60px;
-    height: 60px;
+    height: 50px;
 
     background-size: 100% 100%;
     vertical-align: top;
     horizontal-align: right;
+
+    visibility: collapse;
+}
+
+.Equiped .EquipOverlay {
+    visibility: visible;
+}
+
+.EquipOverlay {
+    background-image:url("file://{images}/custom_game/clothes.png");
+    width: 50px;
+    height: 40px;
+    
+    margin-top:5px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    horizontal-align: left;
 
     visibility: collapse;
 }
@@ -252,18 +289,21 @@
     visibility: collapse;
 }
 
+
+.Owned .PreviewButton {
+    visibility: collapse;
+}
+
 .PreviewButton {
+    margin-bottom: 10px;
+    margin-right: 15px;
     vertical-align: bottom;
     horizontal-align: right;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-    margin-right: 15px;
 }
 
 .PreviewButton:hover {
     brightness:2;
-    margin-bottom: 18px;
+    /* margin-bottom: 18px; */
 }
 
 .Owned .EquipButton {
@@ -271,18 +311,16 @@
 }
 
 .EquipButton {
+    margin-bottom: 10px;
+    margin-right: 15px;
     vertical-align: bottom;
     horizontal-align: right;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-    margin-right: 15px;
 	visibility: collapse;
 }
 
 .EquipButton:hover {
     brightness:2;
-    margin-bottom: 18px;
+    /* margin-bottom: 18px; */
 }
 
 .PlayerMessage {

@@ -14,11 +14,13 @@
                 </Panel>
                 <Panel class="ShopItemImagePanel" id="shop_item_image_panel">
                     <Image id="shop_item_image" class="ShopItemImage" />
-                    <Panel class="PreviewButton" id="preview_button">
-                        <Image src="file://{resources}/images/custom_game/cross.png" />
+                    <Panel class="PreviewButton ShopButton" id="preview_button">
+                        <Label id="equip_button_title" class = "button_title" text="试穿" />
+                        <!-- <Image src="file://{resources}/images/custom_game/cross.png" /> -->
                     </Panel>
-					<Panel class="EquipButton" id="equip_button">
-                        <Image src="file://{resources}/images/custom_game/img_evil.png" />
+					<Panel class="EquipButton ShopButton" id="equip_button">
+                        <Label id="equip_button_title" class = "button_title" text="装备" />
+                        <!-- <Image src="file://{resources}/images/custom_game/img_evil.png" /> -->
                     </Panel>
 					
                 </Panel>
@@ -30,12 +32,15 @@
                 </Panel>
                 <Panel class="OwnedOverlay" id="owned_overlay">
                 </Panel>
+                
+                <Panel class="EquipOverlay" id="equip_overlay" />
+                
             </Panel>
         </snippet>
 	</snippets>
 	
 	
-	<Panel class="root" style = "width: 100%;height: 100%;" hittest="false">
+	<Panel class="root" style = "width: 100%;height: 100%;z-index:4000;" hittest="false">
 		<Panel class="MenuItems">
 			<Panel id="MenuItem_Shop" class="MenuItem" onactivate="OpenShop()">
 				<Image class="MenuItemBackground" src="s2r://panorama/images/custom_game/menu/3_png.vtex"/>
@@ -77,7 +82,7 @@
                 <Label id="point_get_method_message" text="#point_get_methods"/>
             </Panel>
 
-            <Panel class="ConfirmPurchaseDialog Hidden" id="confirm_purchase_dialog">
+            <Panel class="ConfirmPurchaseDialog Hidden" id="confirm_purchase_dialog" hittest="true" onactivate="">
                 <Label id="confirm_purchase" text="#confirm_purchase_msg" html="true" />
                 <Panel class="ConfirmPurchaseButtons">
                     <Button class="ButtonBevel" id="button_confirm" onactivate="OnConfirmPurchase()">

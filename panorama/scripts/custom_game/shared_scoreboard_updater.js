@@ -33,6 +33,8 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 	var ultStateOrTime = PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_HIDDEN; // values > 0 mean on cooldown for that many seconds
 	var goldValue = -1;
 	var isTeammate = false;
+    
+    
 
 	var playerInfo = Game.GetPlayerInfo( playerId );
 	if ( playerInfo )
@@ -117,6 +119,9 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 				playerColorBar.style.backgroundColor = playerColor;
 			}
 		}
+        
+        
+
 	}
 	
 	var playerItemsContainer = playerPanel.FindChildInLayoutFile( "PlayerItemsContainer" );
@@ -228,7 +233,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 		teamsInfo.max_team_players = teamPlayers.length;
 	}
 
-	_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamScore", teamDetails.team_score )
+	_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamScore", teamDetails.rank )
 	_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamName", $.Localize( teamDetails.team_name ) )
 	
 	if ( GameUI.CustomUIConfig().team_colors )
@@ -288,11 +293,11 @@ function _ScoreboardUpdater_ReorderTeam( scoreboardConfig, teamsParent, teamPane
 // sort / reorder as necessary
 function compareFunc( a, b ) // GameUI.CustomUIConfig().sort_teams_compare_func;
 {
-	if ( a.team_score < b.team_score )
+	if ( a.rank > b.rank )
 	{
 		return 1; // [ B, A ]
 	}
-	else if ( a.team_score > b.team_score )
+	else if ( a.rank <= b.rank )
 	{
 		return -1; // [ A, B ]
 	}
@@ -345,9 +350,41 @@ function _ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardConfig, teamsCon
 //	$.Msg( "_ScoreboardUpdater_UpdateAllTeamsAndPlayers: ", scoreboardConfig );
 	
 	var teamsList = [];
+    
+    var endInfoData =  CustomNetTables.GetTableValue("end_info", "end_info");
+    if(!endInfoData){
+        if (Game.GetState() == 9) {
+            $.Schedule(0.3, function(){
+                _ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardConfig, teamsContainer);
+            })
+        }
+        return;
+    }
+		
+    
+    
+    
 	for ( var teamId of Game.GetAllTeamIDs() )
 	{
-		teamsList.push( Game.GetTeamDetails( teamId ) );
+        var  team =  Game.GetTeamDetails( teamId )
+        var targetInfo = null
+        for (var index in endInfoData){
+            var endInfo = endInfoData[index];
+            var ttid = endInfo.tid;
+            $.Msg("info: " + endInfo.tid + " " + endInfo.rank);
+            if (ttid == teamId) {
+                targetInfo = endInfo
+                break;
+            }
+        }
+        
+        if (targetInfo != null && targetInfo.rank != undefined) {
+            team.rank = endInfo.rank
+        } else {
+        	team.rank = 99
+        }
+        
+		teamsList.push( team );
 	}
 
 	// update/create team panels
@@ -360,6 +397,7 @@ function _ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardConfig, teamsCon
 		{
 			panelsByTeam[ teamsList[i].team_id ] = teamPanel;
 		}
+        
 	}
 
 	if ( teamsList.length > 1 )

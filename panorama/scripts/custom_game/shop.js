@@ -2,6 +2,7 @@ var nRefreshCountDown = 0;
 var m_PointsLeft = 5;
 var m_ShopItemPanels = {}; 
 var m_ShopItemFromSerever_IndexByName = [];
+var m_SlotEquipInfo = {}; 
 
 var m_PlayerCollectionData = {}
 
@@ -54,6 +55,14 @@ function UpdateShopItems() {
 }
 
 function ShowConfirmPurchaseDialog(name, cost){
+    if(!m_ShopItemPanels[name]){
+        return;
+    }
+        
+    if(m_ShopItemPanels[name].BHasClass("Owned")){
+        return;
+    }
+    
     $("#confirm_purchase").SetDialogVariableInt("cost", cost);
     $("#confirm_purchase").SetDialogVariable("item_name", $.Localize("econ_" + name));
     $("#confirm_purchase").SetDialogVariable("item_description", $.Localize("Description_" + name));
@@ -111,10 +120,14 @@ function BuildShopItems(data) {
         (function(index){
             var itemData = data[index]
             m_ShopItemPanels[itemData.name].SetPanelEvent("onactivate", function(){
-				ShowConfirmPurchaseDialog(itemData.name, itemData.cost);
+                ShowConfirmPurchaseDialog(itemData.name, itemData.cost);
             });
             m_ShopItemPanels[itemData.name].FindChildTraverse('preview_button').SetPanelEvent("onactivate", function(){
-                GameEvents.SendCustomGameEventToServer('bom_player_preview', {item: itemData.name})
+                GameEvents.SendCustomGameEventToServer('player_preview_req', {item: itemData.name})
+                $("#page_shop").AddClass("Hidden");
+            });
+            m_ShopItemPanels[itemData.name].FindChildTraverse('equip_button').SetPanelEvent("onactivate", function(){
+                GameEvents.SendCustomGameEventToServer('player_equip_req', {to_equip: itemData.name})
                 $("#page_shop").AddClass("Hidden");
             });
             m_ShopItemPanels[itemData.name].SetPanelEvent("onmouseover", function(){
@@ -134,13 +147,26 @@ function RebuildShopTags() {
         $.Schedule(1, RebuildShopTags);
         return;
     }
-    for (var name in m_PlayerCollectionData) {
-		
+    for (var k in m_PlayerCollectionData) {
+		var name = m_PlayerCollectionData[k];
         if (name != "steamid" && m_ShopItemPanels[name] != null) {
 			$.Msg("collection data " + name);
             m_ShopItemPanels[name].AddClass("Owned");
         }
     }
+    
+    for (var k in m_ShopItemPanels) {
+		var panel = m_ShopItemPanels[k];
+        panel.RemoveClass("Equiped");
+    }
+    
+    for (var k in m_SlotEquipInfo) {
+		var name = m_SlotEquipInfo[k];
+        if (name != "steamid" && m_ShopItemPanels[name] != null) {
+            m_ShopItemPanels[name].AddClass("Equiped");
+        }
+    }
+    
 }
 
 function QueryShopItemsFromServer() {
@@ -206,6 +232,20 @@ function OnCollectionDataArrived(table_name, key, data) {
     RebuildShopTags();
 }
 
+function OnEquipDataArrived(table_name, key, data){
+    if(key != 'equip_info_' + Players.GetLocalPlayer())
+	{
+		return;
+	}
+    $.Msg( "Table ", table_name, " changed: '", key, "' = ", data );
+    var data = CustomNetTables.GetTableValue('econ_data', 'equip_info_' + Players.GetLocalPlayer());
+    if (data == null) return;
+    
+    m_SlotEquipInfo = data
+    
+    RebuildShopTags();
+}
+
 function QueryCollectionDataFromServer() {
     GameEvents.SendCustomGameEventToServer('player_query_econ_data_req', {})
 }
@@ -264,6 +304,8 @@ function OnPaymentComplete(kv) {
     CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);
     CustomNetTables.SubscribeNetTableListener('econ_data', OnShopItemsArrived);
     CustomNetTables.SubscribeNetTableListener('econ_data', OnPointHistoryArrived);
+    CustomNetTables.SubscribeNetTableListener('econ_data', OnEquipDataArrived);
+    
 	
 	GameEvents.Subscribe('player_purchase_rsp', OnPlayerPurchaseRsp);
 	
