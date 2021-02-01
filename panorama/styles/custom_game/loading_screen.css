@@ -1,0 +1,4 @@
+.loading{
+        background-image:url("file://{resources}/images/custom_game/mini_heroes_loadingscreen.png");
+	background-size: 100%;
+}

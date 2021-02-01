@@ -1,10 +1,12 @@
 <root>
 	<styles>
+             <include src="file://{resources}/styles/custom_game/loading_screen.css">
 
+             </include>
 	</styles>
-	<Panel>
+	<Panel class="loading">
 
-		<Image src="file://{images}/custom_game/mini_heroes_loadingscreen.png"/>
+
 	
 	</Panel>
 </root>
