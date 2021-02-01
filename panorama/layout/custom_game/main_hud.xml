@@ -134,7 +134,7 @@
 				<!-- </Panel> -->
 				<Panel class = "board_line_content">
 					<Panel class = "align-container">
-						<Label id = "round_info" text = "" class = "text_xl text_green"></Label>
+						<Label id = "round_info" text = "正在向服务器之神祈祷" class = "text_xl text_green"></Label>
 					</Panel>
 				</Panel>
 				<Panel class = "board_line_content">
