@@ -82,9 +82,15 @@ function ShowConfirmPurchaseDialog(name, cost){
     $("#confirm_purchase").SetDialogVariable("item_description", $.Localize("Description_" + name));
     $("#confirm_purchase_dialog").RemoveClass("Hidden");
     psz_PurchaseItemName = name; //临时变量
+	$.Msg("psz_PurchaseItemName " + psz_PurchaseItemName);
 }
 function OnConfirmPurchase() {
-    GameEvents.SendCustomGameEventToServer('bom_player_purchase', {
+	if(psz_PurchaseItemName == undefined){
+		$("#confirm_purchase_dialog").AddClass("Hidden");
+		return;
+	}
+	$.Msg("OnConfirmPurchase");
+    GameEvents.SendCustomGameEventToServer('player_purchase_req', {
         ItemName: psz_PurchaseItemName,
     })
 }
