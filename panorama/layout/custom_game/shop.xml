@@ -7,6 +7,20 @@
 		<include src="file://{resources}/scripts/custom_game/shop.js" />
 	</scripts>
 	<snippets>
+	
+		<snippet name="ShopLine">
+			<Panel class="ShopLineRoot">
+				<Panel class="ShopLineSubtitle">
+					<Image src="file://{resources}/images/custom_game/cross.png" style="width:35px;height:31px;margin-top:2px;"/>
+					<Label id="line_subtitle_text" text="小栏标题"/>
+				</Panel>
+				<Label id="no_good_text" text = "暂无商品" style="font-size:38px;"/>
+				<Panel class="ShopItems" id="shop_items">
+				
+				</Panel>
+				
+			</Panel>
+		</snippet>
 		<snippet name="ShopItem">
             <Panel class="ShopItemRoot NotEnoughPoints">
                 <Panel class="ShopItemTitlePanel">
@@ -15,7 +29,7 @@
                 <Panel class="ShopItemImagePanel" id="shop_item_image_panel">
                     <Image id="shop_item_image" class="ShopItemImage" />
                     <Panel class="PreviewButton ShopButton" id="preview_button">
-                        <Label id="equip_button_title" class = "button_title" text="试穿" />
+                        <Label id="preview_button_title" class = "button_title" text="试穿" />
                         <!-- <Image src="file://{resources}/images/custom_game/cross.png" /> -->
                     </Panel>
 					<Panel class="EquipButton ShopButton" id="equip_button">
@@ -25,7 +39,7 @@
 					
                 </Panel>
                 <Panel class="PurchaseButton" id="purchase_button">
-                    <Label id="purchase_cost_text" text="#purchase_cost" html="true" />
+                    <Label id="purchase_cost_text" text="#purchase_cost" class = "button_title" html="true" />
                 </Panel>
                 <Panel class="SaleOverlay DontShow" id="sale_overlay">
                     <!-- <Label id="sale_text" text="#sale_text" /> -->
@@ -55,7 +69,7 @@
                     <Label class="ShopMainTitle" text="骨币兑换" />
                     <Button class="CloseButton" onactivate="CloseShop()" />
                 </Panel>
-                <Panel class="ShopItems" id="shop_items" />
+                <Panel class="ShopLines" id="shop_lines" />
             </Panel>
             <!-- <Panel class="TradeHistory Hidden" id="trade_history"> -->
             <!-- </Panel> -->

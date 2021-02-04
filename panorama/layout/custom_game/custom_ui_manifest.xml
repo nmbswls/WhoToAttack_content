@@ -3,6 +3,7 @@
         <include src = "file://{resources}/scripts/custom_game/abilities.js"/>
 		<include src="file://{resources}/scripts/custom_game/config/unit_config.js" />
 		<include src="file://{resources}/scripts/custom_game/config/encounter_config.js" />
+		<include src="file://{resources}/scripts/custom_game/config/econ_config.js" />
 		<!-- <include src = "file://{resources}/scripts/custom_game/player_action.js"/> -->
 		<!-- <include src = "file://{resources}/scripts/custom_game/select_unit_handler.js"/> -->
 		<!-- <include src = "file://{resources}/scripts/custom_game/setup.js"/> -->
