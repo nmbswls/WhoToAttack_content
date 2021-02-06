@@ -108,7 +108,7 @@
                 </Panel>
             </Panel>
         </Panel>
-		<Panel class="AlipayCharge Hidden" id="alipay_charge" onactivate="">
+		<Panel class="AlipayCharge Hidden" id="alipay_charge" style = "" onactivate="">
             <Panel id="payment_panel" />
         </Panel>
 	</Panel>

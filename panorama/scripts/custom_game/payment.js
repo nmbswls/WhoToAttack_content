@@ -67,7 +67,7 @@ function Close() {
 	}
 }
 
-// 鏄剧ず浜岀淮鐮?
+
 function ShowQRCode(url) {
 	$("#Html").SetURL(url)
 	$("#HtmlPage").visible = true;

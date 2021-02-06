@@ -24,8 +24,17 @@ function OpenPayment() {
     //     $("#paypal_payment_tooltip").SetDialogVariableInt("steamid", steamid32);
     //     $("#paypal_payment").ToggleClass("Hidden");
     // }
-    $("#menu_items").RemoveClass("Hidden")
+    //$("#menu_items").RemoveClass("Hidden")
     //$("#menu_hit_listener").RemoveClass("MenuHidden");
+}
+
+function ToggleChargePanel() {
+    $.Msg("nmsl");
+    $("#alipay_charge").ToggleClass("Hidden");
+
+    // if (!$("#alipay_charge").BHasClass("Hidden")) {
+        // $("#AvalonPayment").InputFocus();
+    // }
 }
 
 function ClosePayment() {
@@ -334,7 +343,12 @@ function RefreshingRefreshCountDown() {
 }
 
 function OnPay( amount, method ) {
-    // CheckDonateOrderCount = 0;
+    $.Msg("on pay "  + amount +  " " + "method");
+    CheckDonateOrderCount = 0;
+    GameEvents.SendCustomGameEventToServer('create_donate_order_req', {
+        price : amount,
+        method : method,
+    })
     // Request( "create_donate_order", {price:amount, method:method}, function (data) {
         // $.Msg(data.url);
         // if (data.url) {
@@ -344,6 +358,34 @@ function OnPay( amount, method ) {
         // }
     // })
 }
+function OnCreateDonateRsp(keys){
+    $.Msg(keys.url);
+    if (keys.url) {
+        $("#AvalonPayment").ShowQRCode(keys.url);
+    } else {
+        CheckDonateOrder();
+    }
+}   
+
+function CheckDonateOrder() {
+    var steamid = Game.GetLocalPlayerInfo().player_steamid;
+    var table = CustomNetTables.GetTableValue("econ_data", "donate_order_" + steamid);
+    $.Msg(table)
+    if (table && table['url']) {
+        $.Msg(table['url']);
+        $("#AvalonPayment").ShowQRCode(table['url']);
+        return
+    }
+
+    if (CheckDonateOrderCount >= 5) {
+        $("#AvalonPayment").InputFocus();
+        return;
+    }
+
+    CheckDonateOrderCount++;
+    $.Schedule(0.5, CheckDonateOrder)
+}
+
 
 function OnPaymentComplete(kv) {
     if (!$("#alipay_charge").BHasClass("Hidden")) {
@@ -370,6 +412,7 @@ function GetItemTagBySlot(slot){
     PaymentPanel.BLoadLayout("file://{resources}/layout/custom_game/payment.xml", false, false);
     PaymentPanel.OnPay(OnPay);
 
+    GameEvents.Subscribe("create_donate_order_rsp", OnCreateDonateRsp);
     GameEvents.Subscribe("avalon_payment_complete", OnPaymentComplete);
 	InitTabContainers()
     QueryShopRelatedDataFromServer();
