@@ -20,12 +20,13 @@
 #HtmlPage {
 	horizontal-align: center;
 	vertical-align: middle;
-	transition-property: opacity, transform;
-	transition-duration: 0.3s;
+	/* transition-property: opacity, transform; */
+	/* transition-duration: 0.3s; */
 }
 
 #InputPage {
 	flow-children: down;
+	height:80%;
 }
 
 #InputPage .t1 {
@@ -66,8 +67,9 @@
 
 #PrePayButton{
 	horizontal-align: center;
-	margin: 20px;
+	margin-top: 30px;
 	flow-children: down;
+	
 }
 
 #PrePayButton .title{
@@ -78,14 +80,24 @@
 	horizontal-align: center;
 }
 
+#PrePayButton .PayTitle{
+	margin-right:20px;
+	vertical-align:center;
+}
+
 #PrePayButton .pay-btn{
-	padding: 10px 15px;
+	padding: 5px 5px;
 	flow-children: right;
 	border-radius: 5px;
+	margin-right:20px;
 }
 
 #PrePayButton .pay-btn:disabled{
 
+}
+
+#PrePayButton .pay-btn .Chosen{
+	border:10px;
 }
 
 #PrePayButton .pay-btn.alipay{
@@ -94,7 +106,6 @@
 
 #PrePayButton .pay-btn.wechatpay{
 	background-color: #3eb94e;
-	margin-left: 10px;
 }
 
 #PrePayButton .pay-btn Image{
@@ -106,6 +117,7 @@
 	font-size: 20px;
 	color: #fff;
 	margin-left: 5px;
+	horizontal-align:center;
 }
 
 #PrePayButton .pay-btn.alipay:hover{
@@ -120,42 +132,64 @@
 	transform: scale3d(0.9,0.9,1);
 }
 
-#AddAvalonCoin{
+#pay_button{
+	margin-top:20px;
+	horizontal-align:center;
+	vertical-align:bottom;
+	background-color: black;
+	width:150px;
+	height:40px;
+	border-radius: 5px;
+}
+
+#pay_button Label{
+	horizontal-align:center;
+	vertical-align:center;
+}
+
+#donate_choices{
 	horizontal-align: center;
 	margin-top: 15px;
 	flow-children: right;
 }
 
-#AddAvalonCoin .btn{
+#donate_choices .btn{
 	background-color: #414141;
 	padding: 2px 4px;
+	height:200px;
+	width:150px;
 	border-radius: 5px;
-	margin: 0px 3px;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
-#AddAvalonCoin .btn Label{
+#donate_choices .btn Label{
 	margin-top: 3px;
+	horizontal-align: center;
+	vertical-align:center;
+	font-size:50px;
 	color: gradient( linear, 0% 100%, 0% 0%, from( #FFED83 ), to( #DE8B00 ) );
 }
 
-
-#AddAvalonCoin .btn:hover{
-	brightness: 2;
+#donate_choices .btn.Chosen{
+	border: 3px solid red;
+}
+	
+#donate_choices .btn:hover{
+	/* brightness: 2; */
 }
 
-#AddAvalonCoin .btn:active{
-	transform: scale3d(0.9,0.9,1);
-}
 
 /*=======================*/
 #HtmlPage {
 	flow-children: down;
-	padding: 20px;
+	padding: 50px;
+	height:600px;
 }
 
 #Html {
-	width: 850px;
-	height: 350px;
+	width: 280px;
+	height: 280px;
 	background-color: #fff;
 }
 

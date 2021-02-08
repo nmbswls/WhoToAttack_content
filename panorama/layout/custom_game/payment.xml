@@ -7,42 +7,45 @@
 		<include src="file://{resources}/scripts/custom_game/payment.js" />
 	</scripts>
 	<Panel class="PaymentRoot" onactivate="" >
-
+		<Panel>
+			<Button class="pay-btn alipay" onactivate="">
+				<Image style="vertical-align:center;" src="file://{resources}/images/custom_game/corss.png" />
+			</Button>
+		</Panel>
 		<Panel id="InputPage" >
-			<Label class="t1" text="???" />
-			<Panel class="t2" hittest="false">
-				<Panel id="AvalonCoinPanel" onactivate="AvalonCoinInputFocus()">
-					<TextEntry id="AvalonCoin" maxchars="7" ontextentrychange="OnAvalonCoinChange()" />
-				</Panel>
-				<Label class="title" text="??" />
-			</Panel>
-			<!-- 鑷姩澧炲姞 -->
-			<Panel id="AddAvalonCoin" >
-				<Button class="btn" onactivate="AddAvalonCoin(1)">
-					<Label text="+1" />
+			<Label class="t1" text="选择充值类型" />
+
+			<Panel id="donate_choices" >
+				<Button class="btn" onactivate="ChooseAmounIdx(0)">
+					<Label text="+6" />
 				</Button>
-				<Button class="btn" onactivate="AddAvalonCoin(5)">
-					<Label text="+5" />
+				<Button class="btn" onactivate="ChooseAmounIdx(1)">
+					<Label text="+30" />
 				</Button>
-				<Button class="btn" onactivate="AddAvalonCoin(10)">
-					<Label text="+10" />
+				<Button class="btn" onactivate="ChooseAmounIdx(2)">
+					<Label text="+68" />
+				</Button>
+				<Button class="btn" onactivate="ChooseAmounIdx(3)">
+					<Label text="+128" />
 				</Button>
 			</Panel>
 			<!-- 鏀粯鎸夐挳 -->
 			<Panel id="PrePayButton" >
-				<Label class="title" html="true" text="... {s:Amount} ?" />
 				<Panel class="line center">
-					<Button class="pay-btn alipay" onactivate="Pay('alipay')">
-						<Image src="file://{resources}/images/custom_game/avalon_store/alipay_png.vtex" />
-						<Label text="???"/>
+					<Label class="PayTitle" text="选择支付方式:"/>
+					<Button class="pay-btn alipay" onactivate="">
+						<Image style="vertical-align:center;" src="file://{resources}/images/custom_game/avalon_store/alipay_png.vtex" />
+						<Label text="alipay"/>
 					</Button>
-					<Button class="pay-btn wechatpay" onactivate="Pay('wechatpay')">
-						<Image src="file://{resources}/images/custom_game/avalon_store/wechatpay_png.vtex" />
-						<Label text="???" />
+					<Button class="pay-btn wechatpay" onactivate="">
+						<Image style="vertical-align:center;" src="file://{resources}/images/custom_game/avalon_store/wechatpay_png.vtex" />
+						<Label text="wechat" />
 					</Button>
 				</Panel>
-				<Label id="PayTip" class="center margin-sm" html="true" text="" />
 			</Panel>
+			<Button id="pay_button" onactivate="Pay('alipay')">
+				<Label text="确认捐助" />
+			</Button>
 		</Panel>
 
 		<Panel id="HtmlPage" onactivate="" >

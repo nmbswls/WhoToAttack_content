@@ -471,8 +471,8 @@
 }
 
 .AlipayCharge {
-    width: 750px;
-    height: 700px;
+    width: 800px;
+    height: 550px;
     vertical-align:center;
     horizontal-align:center;
     /*margin-bottom: 100px;*/
@@ -486,7 +486,7 @@
     /* transition-timing-function: ease-in-out; */
 
     border-radius: 20px;
-    padding: 30px;
+    padding: 10px;
     
     opacity: 1;
     z-index: 3001;

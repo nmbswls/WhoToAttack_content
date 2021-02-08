@@ -186,12 +186,12 @@ function BuildShopItems(data) {
 				ShowConfirmPurchaseDialog(mItemId, itemData.name, itemData.cost);
 			});
 			m_ShopItemPanels[mItemId].FindChildTraverse('preview_button').SetPanelEvent("onactivate", function(){
-				GameEvents.SendCustomGameEventToServer('player_preview_req', {itemId: itemData.name})
+				GameEvents.SendCustomGameEventToServer('player_preview_req', {itemId: mItemId})
 				$("#page_shop").AddClass("Hidden");
 			});
 			m_ShopItemPanels[mItemId].FindChildTraverse('equip_button').SetPanelEvent("onactivate", function(){
-				GameEvents.SendCustomGameEventToServer('player_equip_req', {itemId: itemData.name})
-				$("#page_shop").AddClass("Hidden");
+				GameEvents.SendCustomGameEventToServer('player_equip_req', {itemId: mItemId})
+				// $("#page_shop").AddClass("Hidden");
 			});
 			m_ShopItemPanels[mItemId].SetPanelEvent("onmouseover", function(){
 				$.DispatchEvent("DOTAShowTextTooltip", m_ShopItemPanels[mItemId], $.Localize('#description_'+itemData.name));
@@ -230,13 +230,18 @@ function RebuildShopTags() {
     
     for (var k in m_ShopItemPanels) {
 		var panel = m_ShopItemPanels[k];
+		if(!panel){
+			continue;
+		}
         panel.RemoveClass("Equiped");
+		panel.FindChildTraverse('equip_button_title').text = "equip";
     }
     
     for (var k in m_SlotEquipInfo) {
 		var name = m_SlotEquipInfo[k];
         if (name != "steamid" && m_ShopItemPanels[name] != null) {
             m_ShopItemPanels[name].AddClass("Equiped");
+			m_ShopItemPanels[name].FindChildTraverse('equip_button_title').text = "unequip";
         }
     }
     
@@ -343,7 +348,7 @@ function RefreshingRefreshCountDown() {
 }
 
 function OnPay( amount, method ) {
-    $.Msg("on pay "  + amount +  " " + "method");
+    $.Msg("on pay "  + amount +  " " + method);
     CheckDonateOrderCount = 0;
     GameEvents.SendCustomGameEventToServer('create_donate_order_req', {
         price : amount,
@@ -361,7 +366,7 @@ function OnPay( amount, method ) {
 function OnCreateDonateRsp(keys){
     $.Msg(keys.url);
     if (keys.url) {
-        $("#AvalonPayment").ShowQRCode(keys.url);
+        $("#payment_panel").ShowQRCode(keys.url);
     } else {
         CheckDonateOrder();
     }
@@ -373,12 +378,12 @@ function CheckDonateOrder() {
     $.Msg(table)
     if (table && table['url']) {
         $.Msg(table['url']);
-        $("#AvalonPayment").ShowQRCode(table['url']);
+        $("#payment_panel").ShowQRCode(table['url']);
         return
     }
 
     if (CheckDonateOrderCount >= 5) {
-        $("#AvalonPayment").InputFocus();
+        $("#payment_panel").InputFocus();
         return;
     }
 
