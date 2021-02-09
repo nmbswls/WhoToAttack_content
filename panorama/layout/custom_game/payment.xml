@@ -5,6 +5,7 @@
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/payment.js" />
+        
 	</scripts>
 	<Panel class="PaymentRoot" onactivate="" >
 		<Panel>
@@ -14,7 +15,7 @@
 		</Panel>
 		<Panel id="InputPage" >
 			<Label class="t1" text="选择充值类型" />
-
+            
 			<Panel id="donate_choices" >
 				<Button class="btn" onactivate="ChooseAmounIdx(0)">
 					<Label text="+6" />
@@ -50,8 +51,9 @@
 
 		<Panel id="HtmlPage" onactivate="" >
 			<TextEntry text="" id="url_entry" />
-			<DOTAHTMLPanel id="Html" />
-			
+			<Image id="testtttt" style="width:200px;height:200px;" src=""/>
+            
+            
 			<Label id="HtmlPageTip" html="true" text="#qrcode_charge_tooltip" />
 
 			<Panel class="BottomButtons">

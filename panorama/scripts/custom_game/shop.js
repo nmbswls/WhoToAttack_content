@@ -364,9 +364,9 @@ function OnPay( amount, method ) {
     // })
 }
 function OnCreateDonateRsp(keys){
-    $.Msg(keys.url);
-    if (keys.url) {
-        $("#payment_panel").ShowQRCode(keys.url);
+    $.Msg(keys.img_url);
+    if (keys.img_url) {
+        $("#payment_panel").ShowQRCode(keys.img_url);
     } else {
         CheckDonateOrder();
     }

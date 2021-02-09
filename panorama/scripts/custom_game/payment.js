@@ -15,7 +15,9 @@ var payHandle = null;
 function Pay( method ) {
 	$("#InputPage").visible = false;
 	$("#HtmlPage").visible = true;
+    
 	if (payHandle) {
+        $.Msg("cnm on Pay");
 		var amount = DONATE_AMOUNT_ARR[m_ChosenAmountIdx];
 		if (!amount || amount < 0) return;
 		payHandle( amount, method );
@@ -73,7 +75,9 @@ function Close() {
 
 
 function ShowQRCode(url) {
-	$("#Html").SetURL(url);
+    var realUrl = "http://47.116.74.28:8099/who_to_kill/store/image?code_url=" + encodeURIComponent(url);
+    $("#testtttt").SetImage(realUrl);
+	//$("#Html").SetURL(url);
 	//setHtml(html)
 	$("#HtmlPage").visible = true;
 	$("#url_entry").text = url;
@@ -114,7 +118,9 @@ function ChooseAmounIdx(idx){
 (function(){
 	GameUI.UpdatePaymentPointsRemaining = UpdatePaymentPointsRemaining
 	
-	
+    $.Msg(encodeURIComponent('http://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3691689833,241053840&fm=15&gp=0.jpg'));
+	// $("#testtttt").SetImage("http://47.116.74.28:8099/who_to_kill/store/image?code_url=weixin%3A%2F%2Fwxpay%2Fbizpayurl%3Fpr%3DiGyj6kjzz");
+    
 	$.GetContextPanel().InputFocus = AvalonCoinInputFocus;
 	$.GetContextPanel().OnClose = function (f) { closeHandle = f }
 	$.GetContextPanel().OnPay = function (f) { payHandle = f }
