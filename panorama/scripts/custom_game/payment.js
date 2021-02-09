@@ -73,7 +73,8 @@ function Close() {
 
 
 function ShowQRCode(url) {
-	$("#Html").SetURL(url)
+	$("#Html").SetURL(url);
+	//setHtml(html)
 	$("#HtmlPage").visible = true;
 	$("#url_entry").text = url;
 }
