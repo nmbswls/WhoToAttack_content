@@ -1,4 +1,10 @@
 $.Msg("cnmcnmcnmcnmcnmcncmn payment load");
+
+DONATE_AMOUNT_ARR = [6,30,68,128]
+
+m_ChosenAmountIdx = 0;
+m_PayMethod = 0;
+
 function GoBack() {
 	$("#InputPage").visible = true;
 	$("#HtmlPage").visible = false;
@@ -9,10 +15,10 @@ var payHandle = null;
 function Pay( method ) {
 	$("#InputPage").visible = false;
 	$("#HtmlPage").visible = true;
+    
 	if (payHandle) {
-		var AvalonCoin = $("#AvalonCoin");
-		var text = AvalonCoin.text;
-		var amount = parseInt(text);
+        $.Msg("cnm on Pay");
+		var amount = DONATE_AMOUNT_ARR[m_ChosenAmountIdx];
 		if (!amount || amount < 0) return;
 		payHandle( amount, method );
 	}
@@ -67,9 +73,12 @@ function Close() {
 	}
 }
 
-// 鏄剧ず浜岀淮鐮?
+
 function ShowQRCode(url) {
-	$("#Html").SetURL(url)
+    var realUrl = "http://47.116.74.28:8099/who_to_kill/store/image?code_url=" + encodeURIComponent(url);
+    $("#testtttt").SetImage(realUrl);
+	//$("#Html").SetURL(url);
+	//setHtml(html)
 	$("#HtmlPage").visible = true;
 	$("#url_entry").text = url;
 }
@@ -94,11 +103,24 @@ function ShowManualQRCode() {
 	$("#manual_qrcode_wechat").visible = true;
 }
 
+function ChooseAmounIdx(idx){
+	m_ChosenAmountIdx = idx;
+	var panel = $("#donate_choices");
+	for (var i = 0; i < panel.GetChildCount(); i++) {
+        var child = panel.GetChild(i)
+        child.RemoveClass("Chosen");
+    }
+	panel.GetChild(m_ChosenAmountIdx).AddClass("Chosen");
+	$.Msg("ChooseAmounIdx" + m_ChosenAmountIdx);
+}
+
+
 (function(){
 	GameUI.UpdatePaymentPointsRemaining = UpdatePaymentPointsRemaining
-	var AvalonCoin = $("#AvalonCoin");
-	AvalonCoin.text = 8;
-	$("#PrePayButton").SetDialogVariable("Amount", "8");
+	
+    $.Msg(encodeURIComponent('http://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3691689833,241053840&fm=15&gp=0.jpg'));
+	// $("#testtttt").SetImage("http://47.116.74.28:8099/who_to_kill/store/image?code_url=weixin%3A%2F%2Fwxpay%2Fbizpayurl%3Fpr%3DiGyj6kjzz");
+    
 	$.GetContextPanel().InputFocus = AvalonCoinInputFocus;
 	$.GetContextPanel().OnClose = function (f) { closeHandle = f }
 	$.GetContextPanel().OnPay = function (f) { payHandle = f }
@@ -109,5 +131,5 @@ function ShowManualQRCode() {
     $("#manual_qrcode_alipay").visible = false;
 	// $("#manual_qrcode_wechat").visible = false;
 
-	$("#PayTip").text = "fuck"
+	ChooseAmounIdx(0);
 })()

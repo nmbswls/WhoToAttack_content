@@ -1,0 +1,9 @@
+"addon"
+{
+    
+
+    "purchase_cost"             "消耗{s:cost}积分购买"
+    "confirm_purchase_msg"      "你确定需要消耗 {d:cost} 点积分购买 {s:item_name} 吗？<br>{s:item_description}"
+
+    
+}
