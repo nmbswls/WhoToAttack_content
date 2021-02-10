@@ -1,6 +1,6 @@
 $.Msg("cnmcnmcnmcnmcnmcncmn payment load");
 
-DONATE_AMOUNT_ARR = [6,30,68,128]
+DONATE_AMOUNT_ARR = [6,3000,6800,12800]
 
 m_ChosenAmountIdx = 0;
 m_PayMethod = 0;
@@ -118,8 +118,7 @@ function ChooseAmounIdx(idx){
 (function(){
 	GameUI.UpdatePaymentPointsRemaining = UpdatePaymentPointsRemaining
 	
-    $.Msg(encodeURIComponent('http://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3691689833,241053840&fm=15&gp=0.jpg'));
-	// $("#testtttt").SetImage("http://47.116.74.28:8099/who_to_kill/store/image?code_url=weixin%3A%2F%2Fwxpay%2Fbizpayurl%3Fpr%3DiGyj6kjzz");
+    // $("#testtttt").SetImage("http://47.116.74.28:8099/who_to_kill/store/image?code_url=weixin%3A%2F%2Fwxpay%2Fbizpayurl%3Fpr%3DiGyj6kjzz");
     
 	$.GetContextPanel().InputFocus = AvalonCoinInputFocus;
 	$.GetContextPanel().OnClose = function (f) { closeHandle = f }

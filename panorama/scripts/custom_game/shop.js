@@ -17,6 +17,7 @@ function OpenShop(){
 function OpenPayment() {
     // if ($.Language() == "schinese") {
         $("#alipay_charge").ToggleClass("Hidden");
+    $("#qrcharge_tip").text = "高手过招，点到为止";
     // }else{
     //     var playerInfo = Game.GetPlayerInfo(Players.GetLocalPlayer());
     //     var steamid32 = playerInfo.player_steamid.substring(4);
@@ -375,9 +376,7 @@ function OnCreateDonateRsp(keys){
 function CheckDonateOrder() {
     var steamid = Game.GetLocalPlayerInfo().player_steamid;
     var table = CustomNetTables.GetTableValue("econ_data", "donate_order_" + steamid);
-    $.Msg(table)
-    if (table && table['url']) {
-        $.Msg(table['url']);
+    if (table && table['img_url']) {
         $("#payment_panel").ShowQRCode(table['url']);
         return
     }
@@ -395,10 +394,10 @@ function CheckDonateOrder() {
 function OnPaymentComplete(kv) {
     if (!$("#alipay_charge").BHasClass("Hidden")) {
         $("#alipay_charge").AddClass("Hidden");
-        $("#charge_button_text").text = $.Localize("#charge");
+        $("#qrcharge_tip").text = "支付成功";
     }
 
-    //QueryPointsDataFromServer();
+    QueryCollectionDataFromServer();
     $("#page_shop").RemoveClass("Hidden");
     //$("#menu_hit_listener").RemoveClass("MenuHidden");
 }
@@ -418,7 +417,7 @@ function GetItemTagBySlot(slot){
     PaymentPanel.OnPay(OnPay);
 
     GameEvents.Subscribe("create_donate_order_rsp", OnCreateDonateRsp);
-    GameEvents.Subscribe("avalon_payment_complete", OnPaymentComplete);
+    GameEvents.Subscribe("donate_order_complete", OnPaymentComplete);
 	InitTabContainers()
     QueryShopRelatedDataFromServer();
     CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);

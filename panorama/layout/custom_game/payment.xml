@@ -53,8 +53,8 @@
 			<TextEntry text="" id="url_entry" />
 			<Image id="testtttt" style="width:200px;height:200px;" src=""/>
             
-            
-			<Label id="HtmlPageTip" html="true" text="#qrcode_charge_tooltip" />
+            <Label id="qrcharge_tip" text="#qrcode_charge_tooltip" />
+			<!-- <Label id="HtmlPageTip" html="true" text="#qrcode_charge_tooltip" /> -->
 
 			<Panel class="BottomButtons">
 				<Button class="GoBackButton" onactivate="GoBack()">
