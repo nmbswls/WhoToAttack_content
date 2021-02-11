@@ -131,7 +131,7 @@ function BuildShopItems(data) {
 	for (var itemId in data){
 		var itemData = data[itemId];
         $.Msg("try add item panel " + itemId);
-		var itemName = itemData.name;
+		
 		var configInfo = GameUI.EconInfoConfig[String(itemId)];
 		if(!configInfo){
 			continue;
@@ -154,8 +154,8 @@ function BuildShopItems(data) {
 		$.Msg("add item panel " + itemId);
 
 		//m_ShopItemFromSerever_IndexByName[itemName] = itemData;
-		var itemImage = itemData.image;
-
+		var itemImage = configInfo.image;
+        var itemName = configInfo.name;
 		var itemCost = itemData.cost;
 		var itemDiscount = itemData.discount;
 
@@ -178,13 +178,14 @@ function BuildShopItems(data) {
 		// }
 
 		if (itemDiscount !== undefined){
-			m_ShopItemPanels[itemName].FindChildTraverse("sale_overlay").RemoveClass("DontShow");
+			// m_ShopItemPanels[itemId].FindChildTraverse("sale_overlay").RemoveClass("DontShow");
 		}
 
 		(function(mItemId){
 			var itemData = data[mItemId]
+            var itemConfig = GameUI.EconInfoConfig[String(itemId)];
 			m_ShopItemPanels[mItemId].SetPanelEvent("onactivate", function(){
-				ShowConfirmPurchaseDialog(mItemId, itemData.name, itemData.cost);
+				ShowConfirmPurchaseDialog(mItemId, itemConfig.name, itemData.cost);
 			});
 			m_ShopItemPanels[mItemId].FindChildTraverse('preview_button').SetPanelEvent("onactivate", function(){
 				GameEvents.SendCustomGameEventToServer('player_preview_req', {itemId: mItemId})
@@ -195,7 +196,7 @@ function BuildShopItems(data) {
 				// $("#page_shop").AddClass("Hidden");
 			});
 			m_ShopItemPanels[mItemId].SetPanelEvent("onmouseover", function(){
-				$.DispatchEvent("DOTAShowTextTooltip", m_ShopItemPanels[mItemId], $.Localize('#description_'+itemData.name));
+				$.DispatchEvent("DOTAShowTextTooltip", m_ShopItemPanels[mItemId], $.Localize('#description_' + itemConfig.name));
 			});
 			m_ShopItemPanels[mItemId].SetPanelEvent("onmouseout", function(){
 				$.DispatchEvent("DOTAHideTextTooltip");
@@ -252,10 +253,12 @@ function QueryShopItemsFromServer() {
     GameEvents.SendCustomGameEventToServer('player_query_shop_items_req', {})
 }
 
-function OnPlayerPurchaseRsp() {
-	QueryShopRelatedDataFromServer();
-	//GameEvents.SendCustomGameEventToServer("bom_player_equip",{})
-	HideConfirmPurchasePanel();
+function OnPlayerPurchaseRsp(keys) {
+    if(keys.ret){
+        HideConfirmPurchasePanel();
+    }else{
+        HideConfirmPurchasePanel();
+    }
 }
 
 function BuildPointsInfo(data) {
@@ -394,7 +397,7 @@ function CheckDonateOrder() {
 function OnPaymentComplete(kv) {
     if (!$("#alipay_charge").BHasClass("Hidden")) {
         $("#alipay_charge").AddClass("Hidden");
-        $("#qrcharge_tip").text = "支付成功";
+        $("#alipay_charge").FindChildTraverse("qrcharge_tip").text = "支付成功";
     }
 
     QueryCollectionDataFromServer();
