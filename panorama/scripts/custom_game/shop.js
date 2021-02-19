@@ -17,6 +17,7 @@ function OpenShop(){
 function OpenPayment() {
     // if ($.Language() == "schinese") {
         $("#alipay_charge").ToggleClass("Hidden");
+    $("#qrcharge_tip").text = "高手过招，点到为止";
     // }else{
     //     var playerInfo = Game.GetPlayerInfo(Players.GetLocalPlayer());
     //     var steamid32 = playerInfo.player_steamid.substring(4);
@@ -130,7 +131,7 @@ function BuildShopItems(data) {
 	for (var itemId in data){
 		var itemData = data[itemId];
         $.Msg("try add item panel " + itemId);
-		var itemName = itemData.name;
+		
 		var configInfo = GameUI.EconInfoConfig[String(itemId)];
 		if(!configInfo){
 			continue;
@@ -153,8 +154,8 @@ function BuildShopItems(data) {
 		$.Msg("add item panel " + itemId);
 
 		//m_ShopItemFromSerever_IndexByName[itemName] = itemData;
-		var itemImage = itemData.image;
-
+		var itemImage = configInfo.image;
+        var itemName = configInfo.name;
 		var itemCost = itemData.cost;
 		var itemDiscount = itemData.discount;
 
@@ -177,13 +178,14 @@ function BuildShopItems(data) {
 		// }
 
 		if (itemDiscount !== undefined){
-			m_ShopItemPanels[itemName].FindChildTraverse("sale_overlay").RemoveClass("DontShow");
+			// m_ShopItemPanels[itemId].FindChildTraverse("sale_overlay").RemoveClass("DontShow");
 		}
 
 		(function(mItemId){
 			var itemData = data[mItemId]
+            var itemConfig = GameUI.EconInfoConfig[String(itemId)];
 			m_ShopItemPanels[mItemId].SetPanelEvent("onactivate", function(){
-				ShowConfirmPurchaseDialog(mItemId, itemData.name, itemData.cost);
+				ShowConfirmPurchaseDialog(mItemId, itemConfig.name, itemData.cost);
 			});
 			m_ShopItemPanels[mItemId].FindChildTraverse('preview_button').SetPanelEvent("onactivate", function(){
 				GameEvents.SendCustomGameEventToServer('player_preview_req', {itemId: mItemId})
@@ -194,7 +196,7 @@ function BuildShopItems(data) {
 				// $("#page_shop").AddClass("Hidden");
 			});
 			m_ShopItemPanels[mItemId].SetPanelEvent("onmouseover", function(){
-				$.DispatchEvent("DOTAShowTextTooltip", m_ShopItemPanels[mItemId], $.Localize('#description_'+itemData.name));
+				$.DispatchEvent("DOTAShowTextTooltip", m_ShopItemPanels[mItemId], $.Localize('#description_' + itemConfig.name));
 			});
 			m_ShopItemPanels[mItemId].SetPanelEvent("onmouseout", function(){
 				$.DispatchEvent("DOTAHideTextTooltip");
@@ -251,10 +253,12 @@ function QueryShopItemsFromServer() {
     GameEvents.SendCustomGameEventToServer('player_query_shop_items_req', {})
 }
 
-function OnPlayerPurchaseRsp() {
-	QueryShopRelatedDataFromServer();
-	//GameEvents.SendCustomGameEventToServer("bom_player_equip",{})
-	HideConfirmPurchasePanel();
+function OnPlayerPurchaseRsp(keys) {
+    if(keys.ret){
+        HideConfirmPurchasePanel();
+    }else{
+        HideConfirmPurchasePanel();
+    }
 }
 
 function BuildPointsInfo(data) {
@@ -375,9 +379,7 @@ function OnCreateDonateRsp(keys){
 function CheckDonateOrder() {
     var steamid = Game.GetLocalPlayerInfo().player_steamid;
     var table = CustomNetTables.GetTableValue("econ_data", "donate_order_" + steamid);
-    $.Msg(table)
-    if (table && table['url']) {
-        $.Msg(table['url']);
+    if (table && table['img_url']) {
         $("#payment_panel").ShowQRCode(table['url']);
         return
     }
@@ -395,10 +397,10 @@ function CheckDonateOrder() {
 function OnPaymentComplete(kv) {
     if (!$("#alipay_charge").BHasClass("Hidden")) {
         $("#alipay_charge").AddClass("Hidden");
-        $("#charge_button_text").text = $.Localize("#charge");
+        $("#alipay_charge").FindChildTraverse("qrcharge_tip").text = "支付成功";
     }
 
-    //QueryPointsDataFromServer();
+    QueryCollectionDataFromServer();
     $("#page_shop").RemoveClass("Hidden");
     //$("#menu_hit_listener").RemoveClass("MenuHidden");
 }
@@ -418,7 +420,7 @@ function GetItemTagBySlot(slot){
     PaymentPanel.OnPay(OnPay);
 
     GameEvents.Subscribe("create_donate_order_rsp", OnCreateDonateRsp);
-    GameEvents.Subscribe("avalon_payment_complete", OnPaymentComplete);
+    GameEvents.Subscribe("donate_order_complete", OnPaymentComplete);
 	InitTabContainers()
     QueryShopRelatedDataFromServer();
     CustomNetTables.SubscribeNetTableListener('econ_data', OnCollectionDataArrived);
