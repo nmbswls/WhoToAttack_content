@@ -63,7 +63,7 @@
 				<Label text="兑换" class="MenuText" />
 			</Panel>
 		</Panel>
-		<Panel class="MenuPage Shop Hidden" id="page_shop">
+		<Panel class="MenuPage Shop Hidden" id="page_shop" onactivate="">
             <Panel class="ShopContent">
                 <Panel class="ShopTitle">
                     <Label class="ShopMainTitle" text="骨币兑换" />
