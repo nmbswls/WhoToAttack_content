@@ -1,0 +1,85 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/info_panel.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/info_panel.js" />
+	</scripts>
+	<snippets>
+        <snippet name="PlayerInfoPanel">
+            <Panel class="PlayerInfoPanelOuter">
+                <Panel class = "PlayerBadge" style = "background-size:100% 100%;"></Panel>
+                <Panel class = "PlayerBattle invisible" onmouseover="DOTAShowTextTooltip('#txt_curr_battle_oppo')" onmouseout="DOTAHideTextTooltip()"></Panel>
+                <Panel class="PlayerInfoPanelInner" onactivate="" hittest="true">
+                    <!-- <Image class = "invisible" style = "height:70px;width:5px;margin-left:215px;z-index:500;" src = "file://{resources}/images/custom_game/cross.png"/> -->
+                    <Panel class="PlayerInfoLine">
+                        <DOTAAvatarImage class="DotaAvatar" id="avatar_player" onactivate="" steamid="" nocompendiumborder="true"/>
+                        <Panel class="PlayerInfoBase" >
+                            <DOTAUserName steamid="" id="player_name" class='PlayerName' style="margin-left:2px;background-color:rgba(0,0,0,0);" onactivate=""/>
+                            <Panel class="PlayerLine11">
+                                <!-- <Panel id="pic_player_hero" class="PicPlayerHero" style = "background-size:100% 100%;"/> -->
+                                <!-- <Panel id="pic_player_level" class="PicPlayerLevel"></Panel> -->
+                                <!-- <Label id="text_player_level" class='TextPlayerLevel' text="nmb"/> -->
+                            </Panel>
+                        </Panel>
+                    </Panel>
+                    <Panel class="PlayerInfoLine2">
+                        <Panel id="player_hp" class="PlayerInfoHp" ></Panel>
+                        <Label id="text_player_hp" class="TextPlayerHp" text="250"></Label>
+                    </Panel>
+                    <Label id="text_player_gold" class="TextPlayerGold" text="$0"></Label>
+                    <Panel id="player_board_level" class="PlayerInfoLevel">
+                        <Label id="text_player_level" text="1"></Label>
+                    </Panel>
+                </Panel>
+                
+                <!--拉伸式玩家详情-->
+                <!-- <Panel id = "panel_player_details_bg_0" class="panel_player_details_bg"/> -->
+                <!-- <Panel id = "panel_player_details_bg_self_0" class="panel_player_details_bg_self"/> -->
+                <!-- <Panel id = "panel_player_details_0" class="panel_player_details"> -->
+                    <!-- <Panel class="race_line" style="padding-left:20px;height:100px;background-color:rgba(0,0,0,0);margin-top:0px;border-top:1px solid #bbbbbb44;border-right:1px solid #00000088;border-bottom:1px solid #00000088;"> -->
+                        <!-- <Panel id = "player_details_lineup_0" class = "race_col35"> -->
+                        <!-- </Panel> -->
+                        <!-- <Panel id = "player_details_buff_0" class = "race_col36"> -->
+                        <!-- </Panel> -->
+                        <!-- <Panel id = "player_details_ban_0" class = "race_col37"> -->
+                        <!-- </Panel> -->
+                        <!-- <Panel class = "race_col15"> -->
+                            <!-- <Label id = "player_details_money_0" text = ""/> -->
+                        <!-- </Panel> -->
+                        <!-- <Panel class = "race_col5"> -->
+                            <!-- <Label id = "player_details_win_0" text = ""/> -->
+                        <!-- </Panel> -->
+                        <!-- <Panel class = "race_col16"> -->
+                            <!-- <Label id = "player_details_damage_0" text = ""/> -->
+                        <!-- </Panel> -->
+                        <!-- <Panel id = "player_details_blockchat_0" class = "race_col17 invisible" onmouseover="DOTAShowTextTooltip('#tips_muted_player')" onmouseout="DOTAHideTextTooltip()"> -->
+                            <!-- <Image id = "player_details_blockchat_image_0" class = "" src = "s2r://panorama/images/custom_game/banchat_png.vtex"/> -->
+                        <!-- </Panel> -->
+                    <!-- </Panel> -->
+                <!-- </Panel> -->
+
+                <!-- <Panel id = "panel_chat_bubble_0" class = "player_chat_bubble"> -->
+                    <!-- <Label id = "text_chat_bubble_0" class = "player_chat_bubble_text" text = ""/> -->
+                    <!-- <Label class="player_chat_bubble_text_ally" text = "#text_ally"/> -->
+                <!-- </Panel> -->
+            </Panel>
+        </snippet>
+    </snippets>
+	
+	
+	<Panel style="width:100%;height:100%;" hittest="false">
+    
+        <Panel id="button_board_player_info" class="invisible" onactivate="toggle_player_details();"/>
+        <Panel id="board_player_info">
+            <Panel id="board_player_title"> 
+                <Label id = "player_board_title_lineup" text="#text_stat_title_lineup"/>
+                <Label id = "player_board_title_buff" text="#text_stat_title_buff"/>
+                <Label id = "player_board_title_gold" text="#text_stat_title_gold"/>
+                <!-- <Label text="#text_stat_title_wl"/> -->
+                <!-- <Label text="#text_stat_title_damage"/> -->
+            </Panel>
+        </Panel>
+    </Panel>
+</root>
