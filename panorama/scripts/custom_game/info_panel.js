@@ -44,6 +44,31 @@ function ChangeCamera2BattleField(pid){
     });
 }
 
+function OnOpenDoorUpdate(){
+	if(key != 'open_door_info')
+	{
+		return;
+	}
+	var info = CustomNetTables.GetTableValue('player_info_table', 'open_door_info');
+	if(!info){
+		return;
+	}
+	for (var d in info){
+		var pid = info[d].pid;
+		
+		if(!m_InfoItemPanels[pid]){
+			continue;
+		}
+		
+		var panal = m_InfoItemPanels[pid];
+		if(info[d].is_open != undefined && info[d].is_open != 0){
+			panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
+		}else{
+			panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
+		}
+	}
+}
+
 function OnStatUpdate(table_name, key, data){
 	
 	if(key != 'user_panel_ranking')
@@ -109,7 +134,6 @@ function OnStatUpdate(table_name, key, data){
 		// }
 	}
 	$("#button_board_player_info").SetHasClass('invisible',false);
-	
 }
 
 (function(){
