@@ -16,6 +16,34 @@ function toggle_player_details(){
     }
 }
 
+var CAMERA_CENTER_POSITION = {
+    0 : [-2048,1920,128],
+    1 : [0,1920,128],
+    2 : [2048,1920,128],
+    3 : [2048,-128,128],
+    4 : [2048,-2174,128],
+    5 : [0,-2174,128],
+    6 : [-2048,-2174,128],
+    7 : [-2048,-128,128],
+    8: [0,0,128],
+};
+
+function ChangeCamera2BattleField(pid){
+	
+    GameUI.SetCameraTargetPosition( CAMERA_CENTER_POSITION[pid], 0.2 );
+
+    // var target_player_team = player_id + 6;
+    // GameEvents.SendCustomGameEventToServer( "reset_fow", { 
+        // "local_player_team": Players.GetTeam(Players.GetLocalPlayer()),
+        // "target_player_team": target_player_team,
+    // });
+    IS_CAMERA_MOVING = true;
+    $.Schedule(0.5,function(){
+        GameUI.SetCameraTarget( -1 );
+        IS_CAMERA_MOVING = false;
+    });
+}
+
 function OnStatUpdate(table_name, key, data){
 	
 	if(key != 'user_panel_ranking')
@@ -48,11 +76,18 @@ function OnStatUpdate(table_name, key, data){
 	for (var i=0;i<arr.length;i++){
 		var pid = arr[i].pid;
 		if(!m_InfoItemPanels[pid]){
-			m_InfoItemPanels[pid] = $.CreatePanel("Panel", container, "");
-			m_InfoItemPanels[pid].BLoadLayoutSnippet("PlayerInfoPanel");
+			var newPanel = $.CreatePanel("Panel", container, "");
+			
+			newPanel.BLoadLayoutSnippet("PlayerInfoPanel");
 			$.Msg(arr[i]);
-			m_InfoItemPanels[pid].FindChildTraverse("player_name").steamid = arr[i].steamId;
-			m_InfoItemPanels[pid].FindChildTraverse("avatar_player").steamid = arr[i].steamId;
+			newPanel.FindChildTraverse("player_name").steamid = arr[i].steamId;
+			newPanel.FindChildTraverse("avatar_player").steamid = arr[i].steamId;
+			
+			newPanel.FindChildTraverse("avatar_player").SetPanelEvent("onactivate", 
+				function(){ ChangeCamera2BattleField(pid);}
+			); 
+			
+			m_InfoItemPanels[pid] = newPanel;
 		}
 		m_InfoItemPanels[pid].FindChildTraverse("text_player_hp").text = arr[i].score;
 		m_InfoItemPanels[pid].style['position'] = '0px '+i*105+'px 0px';
