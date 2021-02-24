@@ -82,10 +82,8 @@ function OnStatUpdate(table_name, key, data){
 	$.Msg(info);
     var arr = [];         
 	for (var d in info){
-		
 		var tmp = {"steamId" : info[d].steamId, "pid" : info[d].pid, "score" : info[d].hp}
 		arr.push(tmp);
-		$.Msg(tmp);
 	}
 	arr.sort(function(a,b){return b.score-a.score});
 	
@@ -109,7 +107,10 @@ function OnStatUpdate(table_name, key, data){
 			newPanel.FindChildTraverse("avatar_player").steamid = arr[i].steamId;
 			
 			newPanel.FindChildTraverse("avatar_player").SetPanelEvent("onactivate", 
-				function(){ ChangeCamera2BattleField(pid);}
+				function(){
+					$.Msg("avatar onclick " + pid);
+					ChangeCamera2BattleField(pid);
+				}
 			); 
 			
 			m_InfoItemPanels[pid] = newPanel;
