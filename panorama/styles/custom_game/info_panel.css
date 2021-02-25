@@ -1,3 +1,7 @@
+.invisible{
+    visibility:collapse;
+}
+
 #button_board_player_info{
 	width:40px;
 	height:40px;
@@ -48,6 +52,16 @@
 }
 #player_board_title_gold{
 	margin-left:405px;
+}
+
+.OpenDoorMark{
+	background-image: url("file://{images}/custom_game/fight.png");
+	background-size:100% 100%;
+	width:57px;
+	height:57px;
+	margin-top:5px;
+	margin-left:265px;
+	z-index:15;
 }
 
 .DotaAvatar{
