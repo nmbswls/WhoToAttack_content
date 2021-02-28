@@ -9,12 +9,14 @@
 	<snippets>
         <snippet name="PlayerInfoPanel">
             <Panel class="PlayerInfoPanelOuter">
-                <Panel class = "PlayerBadge" style = "background-size:100% 100%;"></Panel>
-                <Panel class = "PlayerBattle invisible" onmouseover="DOTAShowTextTooltip('#txt_curr_battle_oppo')" onmouseout="DOTAHideTextTooltip()"></Panel>
-				<Panel id = "open_door_mark" class="OpenDoorMark invisible"/>
+                <Panel class = "PlayerBadge"></Panel>
+				<Panel id="open_door_mark" class="OpenDoorMark" style="background-size:100% 100%;"/>
+                <!-- <Panel class = "PlayerBattle invisible" onmouseover="DOTAShowTextTooltip('#txt_curr_battle_oppo')" onmouseout="DOTAHideTextTooltip()"></Panel> -->
+				
                 
                 <Panel class="PlayerInfoPanelInner" onactivate="" hittest="true">
-                    <!-- <Image class = "invisible" style = "height:70px;width:5px;margin-left:215px;z-index:500;" src = "file://{resources}/images/custom_game/cross.png"/> -->
+					
+                    <!-- <Image class = "invisible" style = "height:70px;width:5px;margin-left:215px;z-index:500;" src = "file://{resources}/images/custom_game/fight.png"/> -->
                     <Panel class="PlayerInfoLine">
                         <DOTAAvatarImage class="DotaAvatar" id="avatar_player" onactivate="" steamid="" nocompendiumborder="true"/>
                         <Panel class="PlayerInfoBase" >

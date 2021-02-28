@@ -1,6 +1,4 @@
-.invisible{
-    visibility:collapse;
-}
+
 
 #button_board_player_info{
 	width:40px;
@@ -54,15 +52,6 @@
 	margin-left:405px;
 }
 
-.OpenDoorMark{
-	background-image: url("file://{images}/custom_game/fight.png");
-	background-size:100% 100%;
-	width:57px;
-	height:57px;
-	margin-top:5px;
-	margin-left:265px;
-	z-index:15;
-}
 
 .DotaAvatar{
 	height:70px;
@@ -89,7 +78,6 @@
     margin-bottom:5px;
     transition-property:position,opacity;
     transition-duration:0.5s;
-
 /*    background-image: url("s2r://panorama/images/custom_game/panel_details_png.vtex");
 	background-size: 100% 100%;*/
 
@@ -97,14 +85,25 @@
     /*background-color: rgba(0,0,0,0.7);*/
     /*opacity:0;*/
 }
+
 .PlayerBadge{
-	horizontal-align:left; 
-	margin-left:0px;
-	height:100px;
-	width:100px;
-	margin-top:5px;
-	z-index:10;
+
+	/* background-image:url("file://{images}/custom_game/gou.png");  */
+	height:80px;
+	width:80px;
+	/* margin-top:5px; */
+	/* z-index:10; */
 }
+.OpenDoorMark{
+	vertical-align:center;
+	background-image:url("file://{images}/custom_game/fight.png"); 
+	
+	height:40px;
+	width:40px;
+	margin-left:50px;
+	/* z-index:10; */
+}
+
 
 .PlayerName{
     width:250px;
