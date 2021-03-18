@@ -159,7 +159,7 @@
 .ShopItemRoot {
     border: 1px solid #3b6cd0;
     background-color: #000000aa;
-    width: 220px;
+    width: 200px;
     height: 260px;
     margin-left: 10px;
 	margin-right: 10px;
@@ -168,9 +168,11 @@
 
 
 .ShopItemTitlePanel {
-    height: 60px;
+    height: 40px;
     horizontal-align: center;
-    width: 80%;
+	background-color: red;
+	/* background-image:url("s2r://panorama/images/custom_game/econ/discount_png.vtex"); */
+    width: 100%;
 }
 
 .ShopItemTitle {
@@ -183,6 +185,7 @@
 .ShopItemImagePanel {
     vertical-align: center;
     horizontal-align: center;
+	width:100%;
 }
 
 .ShopItemImage {
@@ -197,11 +200,10 @@
     border-left:1px solid #ffffff11;
     border-right: 1px solid #00000044;
     border-bottom: 1px solid #00000088;
-    height: 36px;
-    width: 75%;
+    height: 45px;
+    width: 100%;
     horizontal-align: center;
     vertical-align: bottom;
-    margin-bottom: 10px;
 }
 
 .NotEnoughPoints .PurchaseButton {
@@ -338,8 +340,8 @@
 }
 
 .PreviewButton {
-    margin-bottom: 25px;
-    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-right: 0px;
     vertical-align: bottom;
     horizontal-align: right;
 }
@@ -354,8 +356,8 @@
 }
 
 .EquipButton {
-    margin-bottom: 25px;
-    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-right: 0px;
     vertical-align: bottom;
     horizontal-align: right;
 	visibility: collapse;

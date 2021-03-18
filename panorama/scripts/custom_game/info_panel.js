@@ -82,7 +82,7 @@ function OnStatUpdate(table_name, key, data){
 	$.Msg(info);
     var arr = [];         
 	for (var d in info){
-		var tmp = {"steamId" : info[d].steamId, "pid" : info[d].pid, "score" : info[d].hp}
+		var tmp = {"steamId" : info[d].steamId, "pid" : info[d].pid, "score" : info[d].hp, "money" : info[d].money}
 		arr.push(tmp);
 	}
 	arr.sort(function(a,b){return b.score-a.score});
@@ -116,7 +116,9 @@ function OnStatUpdate(table_name, key, data){
 			m_InfoItemPanels[pid] = newPanel;
 		}
 		m_InfoItemPanels[pid].FindChildTraverse("text_player_hp").text = arr[i].score;
+		m_InfoItemPanels[pid].FindChildTraverse("text_player_gold").text = "$"+arr[i].money;
 		m_InfoItemPanels[pid].style['position'] = '0px '+i*105+'px 0px';
+		
 		
 		// for (var j=0;j<8;j++){
 			// var team_index = GetPlayerIndexByPlayerID(arr[i].player_id);
