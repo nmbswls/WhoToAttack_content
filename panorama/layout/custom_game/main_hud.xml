@@ -60,6 +60,7 @@
 <!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_lich.png"/> -->
 <!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_lion.png"/> -->
 <!-- <Image id="CardImage" src="file://{resources}/images/custom_game/img_wizard_zeus.png"/> -->
+
                     
                     <Panel id="CardBottomBar">
                         <Label id="CardDesp" class="TitleFont" text = "恶魔/1*" />
