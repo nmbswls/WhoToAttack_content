@@ -35,9 +35,9 @@
 			
         </Panel>
         <Panel id="EncounterSelection_Ctrl" hittest="false" >
-            <Label id="EncounterSelection_NoEventHint" class = "button_title" text="无事发生" />
+            <Label id="EncounterSelection_NoEventHint" class = "button_title" text="#no_event" />
             <Button id="EncounterSelection_ShowHide" onactivate="EncounterShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label class = "button_title" text="事件显示" />
+                <Label class = "button_title" text="#show_event" />
             </Button>
         </Panel>
         

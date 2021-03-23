@@ -91,10 +91,10 @@
 		
             <Panel id="CardSelection_Left">
                 <Button id="CardSelection_Lock" onactivate="CardLockUnlock()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                    <Label id="CardSelection_Lock_Label" class = "button_title" text="锁定" />
+                    <Label id="CardSelection_Lock_Label" class = "button_title" text="#card_lock" />
                 </Button>
                 <Button id="CardSelection_Draw" onactivate="CardDrawNew()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                    <Label id="CardSelection_Draw_Label" class = "button_title" text="抽卡" />
+                    <Label id="CardSelection_Draw_Label" class = "button_title" text="#card_draw" />
                 </Button>
             </Panel>
         
@@ -104,7 +104,7 @@
         <Panel id="board_top">
         
             <Button id="CardSelection_ShowHide" onactivate="CardShowHide()" onmouseover="DOTAShowTextTooltip('#CardSelection_Lock_Description')" onmouseout="DOTAHideTextTooltip()" >
-                <Label class = "button_title" text="开关界面" />
+                <Label class = "button_title" text="#card_openclose" />
             </Button>
         
 			<!-- <Panel id = "board_round"> -->
@@ -199,7 +199,7 @@
 		
 		<Panel id = "panel_guide" hittest = "true">
             <Panel class="store_title">
-                <Label class="text_panel_title" text="教程" />
+                <Label class="text_panel_title" text="#game_guide" />
             </Panel>
 
             <Image style="width:900px;height:600px;margin-left:30px;margin-top:100px;" src="file://{images}/custom_game/info.png"/>

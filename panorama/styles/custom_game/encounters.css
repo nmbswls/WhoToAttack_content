@@ -59,7 +59,7 @@
 	horizontal-align: center;
 	margin-right: 15px;
 	margin-left: 15px;
-	text-overflow: ellipsis;
+	text-overflow: shrink;
 	text-align:left;
 	color: #ffffff;
 	font-size: 18px;
