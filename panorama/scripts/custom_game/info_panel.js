@@ -53,6 +53,12 @@ function OnOpenDoorUpdate(){
 	if(!info){
 		return;
 	}
+	for(var k in m_InfoItemPanels)
+	{
+		var panel = m_InfoItemPanels[k];
+		panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
+	}
+	
 	for (var d in info){
 		var pid = info[d].pid;
 		
@@ -61,11 +67,14 @@ function OnOpenDoorUpdate(){
 		}
 		
 		var panal = m_InfoItemPanels[pid];
-		if(info[d].is_open != undefined && info[d].is_open != 0){
-			panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
-		}else{
-			panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
-		}
+		
+		panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
+		
+		// if(info[d].is_open != undefined && info[d].is_open != 0){
+			// panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
+		// }else{
+			// panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
+		// }
 	}
 }
 
