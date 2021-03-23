@@ -44,7 +44,7 @@ function ChangeCamera2BattleField(pid){
     });
 }
 
-function OnOpenDoorUpdate(){
+function OnOpenDoorUpdate(table_name, key, data){
 	if(key != 'open_door_info')
 	{
 		return;
@@ -53,19 +53,29 @@ function OnOpenDoorUpdate(){
 	if(!info){
 		return;
 	}
+	$.Msg("cnm ");
+	for(var k in m_InfoItemPanels)
+	{	
+		var panel = m_InfoItemPanels[k];
+		if(panel){
+			panel.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
+		}
+	}
 	for (var d in info){
-		var pid = info[d].pid;
-		
+		var pid = info[d];
 		if(!m_InfoItemPanels[pid]){
 			continue;
 		}
 		
-		var panal = m_InfoItemPanels[pid];
-		if(info[d].is_open != undefined && info[d].is_open != 0){
-			panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
-		}else{
-			panal.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
-		}
+		var panel = m_InfoItemPanels[pid];
+		
+		panel.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
+		
+		// if(info[d].is_open != undefined && info[d].is_open != 0){
+			// panel.FindChildTraverse("open_door_mark").SetHasClass('invisible',false);
+		// }else{
+			// panel.FindChildTraverse("open_door_mark").SetHasClass('invisible',true);
+		// }
 	}
 }
 
@@ -146,4 +156,6 @@ function OnStatUpdate(table_name, key, data){
     toggle_player_details();
 	
 	CustomNetTables.SubscribeNetTableListener('player_info_table', OnStatUpdate);
+	CustomNetTables.SubscribeNetTableListener('player_info_table', OnOpenDoorUpdate);
+	
 })();

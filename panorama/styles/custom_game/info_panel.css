@@ -1,4 +1,6 @@
-
+.invisible{
+	visibility:collapse;
+}
 
 #button_board_player_info{
 	width:40px;

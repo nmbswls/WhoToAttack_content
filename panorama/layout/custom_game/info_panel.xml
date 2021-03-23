@@ -10,7 +10,7 @@
         <snippet name="PlayerInfoPanel">
             <Panel class="PlayerInfoPanelOuter">
                 <Panel class = "PlayerBadge"></Panel>
-				<Panel id="open_door_mark" class="OpenDoorMark" style="background-size:100% 100%;"/>
+				<Panel id="open_door_mark" class="OpenDoorMark invisible" style="background-size:100% 100%;"/>
                 <!-- <Panel class = "PlayerBattle invisible" onmouseover="DOTAShowTextTooltip('#txt_curr_battle_oppo')" onmouseout="DOTAHideTextTooltip()"></Panel> -->
 				
                 
