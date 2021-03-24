@@ -115,12 +115,15 @@ function OnStatUpdate(table_name, key, data){
 			newPanel.FindChildTraverse("player_name").steamid = arr[i].steamId;
 			newPanel.FindChildTraverse("avatar_player").steamid = arr[i].steamId;
 			
-			newPanel.FindChildTraverse("avatar_player").SetPanelEvent("onactivate", 
-				function(){
-					$.Msg("avatar onclick " + pid);
-					ChangeCamera2BattleField(pid);
-				}
-			); 
+			(function(idx){
+				var pid = arr[idx].pid;
+				newPanel.FindChildTraverse("avatar_player").SetPanelEvent("onactivate", 
+					function(){
+						$.Msg("avatar onclick " + pid);
+						ChangeCamera2BattleField(pid);
+					}
+				); 
+			})(i);
 			
 			m_InfoItemPanels[pid] = newPanel;
 		}
