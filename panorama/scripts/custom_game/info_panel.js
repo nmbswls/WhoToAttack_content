@@ -30,7 +30,9 @@ var CAMERA_CENTER_POSITION = {
 
 function ChangeCamera2BattleField(pid){
 	
-    GameUI.SetCameraTargetPosition( CAMERA_CENTER_POSITION[pid], 0.2 );
+	var team = Players.GetTeam(pid);
+	
+    GameUI.SetCameraTargetPosition( CAMERA_CENTER_POSITION[team], 0.2 );
 
     // var target_player_team = player_id + 6;
     // GameEvents.SendCustomGameEventToServer( "reset_fow", { 
