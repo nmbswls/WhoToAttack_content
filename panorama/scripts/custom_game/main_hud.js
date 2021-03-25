@@ -27,6 +27,7 @@ find_dota_hud_element('SearchContainer').style['opacity'] = '0';
 find_dota_hud_element('RequestSuggestion').style['opacity'] = '0';
 find_dota_hud_element('PopularItems').style['opacity'] = '0';
 find_dota_hud_element('ToggleMinimalShop').style['opacity'] = '0';
+find_dota_hud_element('ToggleAdvancedShop').style['opacity'] = '0';
 
 
 
